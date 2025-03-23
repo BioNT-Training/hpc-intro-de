@@ -1,66 +1,45 @@
 ---
-title: Using resources effectively
+title: Effektive Nutzung von Ressourcen
 teaching: 10
 exercises: 20
 ---
 
 
 
+
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Look up job statistics.
-- Make more accurate resource requests in job scripts based on data
-  describing past performance.
+- Job-Statistiken nachschlagen.
+- Stellen Sie genauere Ressourcenanforderungen in Jobskripten auf der Grundlage von Daten, die die vergangene Leistung beschreiben.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How can I review past jobs?
-- How can I use this knowledge to create a more accurate submission script?
+- Wie kann ich vergangene Aufträge überprüfen?
+- Wie kann ich dieses Wissen nutzen, um ein genaueres Einreichungsskript zu erstellen?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-We've touched on all the skills you need to interact with an HPC cluster:
-logging in over SSH, loading software modules, submitting parallel jobs, and
-finding the output. Let's learn about estimating resource usage and why it
-might matter.
+Wir haben alle Fertigkeiten behandelt, die Sie für die Interaktion mit einem HPC-Cluster benötigen: Anmeldung über SSH, Laden von Softwaremodulen, Übermittlung paralleler Aufträge und Auffinden der Ausgabe. Jetzt geht es darum, die Ressourcennutzung abzuschätzen und zu verstehen, warum das wichtig sein kann.
 
-## Estimating Required Resources Using the Scheduler
+## Schätzung der benötigten Ressourcen durch den Scheduler
 
-Although we covered requesting resources from the scheduler earlier with the
-π code, how do we know what type of resources the software will need in
-the first place, and its demand for each? In general, unless the software
-documentation or user testimonials provide some idea, we won't know how much
-memory or compute time a program will need.
+Auch wenn wir die Anforderung von Ressourcen beim Scheduler bereits mit dem π-Code behandelt haben, woher wissen wir, welche Art von Ressourcen die Software überhaupt benötigt und welchen Bedarf sie jeweils hat? Im Allgemeinen wissen wir nicht, wie viel Arbeitsspeicher oder Rechenzeit ein Programm benötigen wird, es sei denn, die Software-Dokumentation oder Benutzerberichte geben uns eine Vorstellung davon.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+::::::::::::::::::::::::::::::::::::::::: callout
 
-## Read the Documentation
+## Lesen Sie die Dokumentation
 
-Most HPC facilities maintain documentation as a wiki, a website, or a
-document sent along when you register for an account. Take a look at these
-resources, and search for the software you plan to use: somebody might have
-written up guidance for getting the most out of it.
+Die meisten HPC-Einrichtungen verfügen über eine Dokumentation in Form eines Wikis, einer Website oder eines Dokuments, das Ihnen bei der Registrierung für ein Konto zugeschickt wird. Werfen Sie einen Blick auf diese Ressourcen und suchen Sie nach der Software, die Sie verwenden möchten: Vielleicht hat jemand eine Anleitung geschrieben, wie Sie das Beste daraus machen können.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-A convenient way of figuring out the resources required for a job to run
-successfully is to submit a test job, and then ask the scheduler about its
-impact using `sacct -u yourUsername`. You can use this knowledge to set up the
-next job with a closer estimate of its load on the system. A good general rule
-is to ask the scheduler for 20% to 30% more time and memory than you expect the
-job to need. This ensures that minor fluctuations in run time or memory use
-will not result in your job being cancelled by the scheduler. Keep in mind that
-if you ask for too much, your job may not run even though enough resources are
-available, because the scheduler will be waiting for other people's jobs to
-finish and free up the resources needed to match what you asked for.
+Eine bequeme Methode, um herauszufinden, welche Ressourcen für die erfolgreiche Ausführung eines Jobs benötigt werden, besteht darin, einen Testjob abzuschicken und dann den Scheduler mit `sacct -u yourUsername` nach dessen Auswirkungen zu fragen. Sie können dieses Wissen nutzen, um den nächsten Job mit einer genaueren Abschätzung seiner Belastung des Systems einzurichten. Eine gute allgemeine Regel ist es, den Scheduler um 20 bis 30 % mehr Zeit und Speicher zu bitten, als Sie erwarten, daß der Job benötigt. Dadurch wird sichergestellt, dass geringfügige Schwankungen in der Laufzeit oder im Speicherbedarf nicht dazu führen, dass Ihr Auftrag vom Scheduler abgebrochen wird. Wenn Sie zu viel verlangen, kann es sein, dass Ihr Auftrag nicht ausgeführt werden kann, obwohl genügend Ressourcen zur Verfügung stehen, weil der Scheduler darauf wartet, dass andere Aufträge beendet werden und die Ressourcen freigeben, die für die von Ihnen verlangte Menge benötigt werden.
 
-## Stats
+## Statistiken
 
-Since we already submitted `amdahl` to run on the cluster, we can query the
-scheduler to see how long our job took and what resources were used. We will
-use `sacct -u yourUsername` to get statistics about `parallel-job.sh`.
+Da wir `amdahl` bereits zur Ausführung im Cluster eingereicht haben, können wir den Scheduler abfragen, um zu sehen, wie lange unser Job gedauert hat und welche Ressourcen verwendet wurden. Wir werden `sacct -u yourUsername` verwenden, um Statistiken über `parallel-job.sh` zu erhalten.
 
 ```bash
 [yourUsername@login1 ~] sacct -u yourUsername
@@ -80,65 +59,46 @@ use `sacct -u yourUsername` to get statistics about `parallel-job.sh`.
 9.extern         extern            def-spons+          1  COMPLETED      0:0
 ```
 
-This shows all the jobs we ran today (note that there are multiple entries per
-job).
-To get info about a specific job (for example, 347087), we change command
-slightly.
+Hier werden alle Aufträge angezeigt, die heute ausgeführt wurden (beachten Sie, dass es mehrere Einträge pro Auftrag gibt). Um Informationen über einen bestimmten Auftrag zu erhalten (z. B. 347087), ändern wir den Befehl leicht ab.
 
 ```bash
 [yourUsername@login1 ~] sacct -u yourUsername -l -j 347087
 ```
 
-It will show a lot of info; in fact, every single piece of info collected on
-your job by the scheduler will show up here. It may be useful to redirect this
-information to `less` to make it easier to view (use the left and right arrow
-keys to scroll through fields).
+Hier werden viele Informationen angezeigt, und zwar jede einzelne Information, die der Scheduler über Ihren Job sammelt. Es kann sinnvoll sein, diese Informationen nach `less` umzuleiten, um sie leichter einsehen zu können (verwenden Sie die Pfeiltasten links und rechts, um durch die Felder zu blättern).
 
 ```bash
 [yourUsername@login1 ~] sacct -u yourUsername -l -j 347087 | less -S
 ```
 
-::::::::::::::::::::::::::::::::::::::  discussion
+:::::::::::::::::::::::::::::::::::::: discussion
 
-## Discussion
+## Diskussion
 
-This view can help compare the amount of time requested and actually
-used, duration of residence in the queue before launching, and memory
-footprint on the compute node(s).
+Diese Ansicht hilft beim Vergleich der angeforderten und tatsächlich genutzten Zeit, der Verweildauer in der Warteschlange vor dem Start und des Speicherbedarfs auf dem/den Rechenknoten.
 
-How accurate were our estimates?
+Wie genau waren unsere Schätzungen?
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Improving Resource Requests
+## Verbesserung der Ressourcenanfragen
 
-From the job history, we see that `amdahl` jobs finished executing in
-at most a few minutes, once dispatched. The time estimate we provided
-in the job script was far too long! This makes it harder for the
-queuing system to accurately estimate when resources will become free
-for other jobs. Practically, this means that the queuing system waits
-to dispatch our `amdahl` job until the full requested time slot opens,
-instead of "sneaking it in" a much shorter window where the job could
-actually finish. Specifying the expected runtime in the submission
-script more accurately will help alleviate cluster congestion and may
-get your job dispatched earlier.
+Aus der Job-Historie geht hervor, dass die Ausführung von `amdahl` Jobs in höchstens ein paar Minuten abgeschlossen war, sobald sie versandt wurden. Die von uns im Auftragsskript angegebene Zeit war viel zu lang! Dadurch wird es für das Warteschlangensystem schwieriger, genau abzuschätzen, wann Ressourcen für andere Aufträge frei werden. In der Praxis bedeutet dies, dass das Warteschlangensystem mit der Abfertigung unseres Auftrags `amdahl` wartet, bis das gesamte angeforderte Zeitfenster geöffnet wird, anstatt ihn in ein viel kürzeres Zeitfenster zu "schieben", in dem der Auftrag tatsächlich beendet werden könnte. Wenn Sie die erwartete Laufzeit im Einreichungsskript genauer angeben, können Sie die Überlastung des Clusters verringern und Ihren Auftrag möglicherweise früher abfertigen lassen.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+::::::::::::::::::::::::::::::::::::::: challenge
 
-## Narrow the Time Estimate
+## Eingrenzung der Zeitabschätzung
 
-Edit `parallel_job.sh` to set a better time estimate. How close can
-you get?
+Bearbeiten Sie `parallel_job.sh`, um eine bessere Zeitschätzung zu erhalten. Wie nah können Sie herankommen?
 
-Hint: use `-t`.
+Hinweis: Verwenden Sie `-t`.
 
-:::::::::::::::  solution
+::::::::::::::: solution
 
-## Solution
+## Lösung
 
-The following line tells Slurm that our job should
-finish within 2 minutes:
+Die folgende Zeile teilt Slurm mit, dass unser Auftrag innerhalb von 2 Minuten beendet sein soll:
 
 ```bash
 #SBATCH -t 00:02:00
@@ -151,7 +111,8 @@ finish within 2 minutes:
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Accurate job scripts help the queuing system efficiently allocate shared resources.
+- Präzise Jobskripte helfen dem Warteschlangensystem bei der effizienten Zuweisung gemeinsamer Ressourcen.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
