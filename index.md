@@ -2,49 +2,41 @@
 site: sandpaper::sandpaper_site
 ---
 
-This workshop is an introduction to using high-performance computing systems
-effectively. We can't cover every case or give an exhaustive course on parallel
-programming in just two days' teaching time. Instead, this workshop is intended
-to give students a good introduction and overview of the tools available and
-how to use them effectively.
 
-::::::::::::::::::::::::::::::::::::::::::  prereq
+Dieser Workshop ist eine Einführung in die effektive Nutzung von Hochleistungsrechnersystemen. Wir können nicht jeden Fall abdecken oder einen erschöpfenden Kurs über parallele Programmierung in nur zwei Tagen Unterricht geben. Stattdessen soll dieser Workshop den Studierenden eine gute Einführung und einen Überblick über die verfügbaren Werkzeuge und deren effektive Nutzung geben.
 
-## Prerequisites
+:::::::::::::::::::::::::::::::::::::::::: prereq
 
-Command line experience is necessary for this lesson. We recommend the
-participants to go through
-[shell-novice](https://swcarpentry.github.io/shell-novice/), if new to the
-command line (also known as terminal or shell).
+## Voraussetzungen
+
+Kommandozeilenkenntnisse sind für diese Lektion erforderlich. Wir empfehlen den Teilnehmern, [shell-novice](https://swcarpentry.github.io/shell-novice/) durchzuarbeiten, wenn sie neu in der Kommandozeile (auch bekannt als Terminal oder Shell) sind.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-By the end of this workshop, students will know how to:
+Am Ende dieses Workshops werden die Teilnehmer wissen, wie man:
 
-- Identify problems a cluster can help solve
-- Use the UNIX shell (also known as terminal or command line) to
-  connect to a cluster.
-- Transfer files onto a cluster.
-- Submit and manage jobs on a cluster using a scheduler.
-- Observe the benefits and limitations of parallel execution.
+- Identifizieren Sie Probleme, die ein Cluster lösen kann
+- Verwenden Sie die UNIX-Shell (auch bekannt als Terminal oder Kommandozeile), um eine Verbindung zu einem Cluster herzustellen.
+- Übertragen von Dateien auf einen Cluster.
+- Einreichen und Verwalten von Aufträgen in einem Cluster mit Hilfe eines Schedulers.
+- Beobachten Sie die Vorteile und Grenzen der parallelen Ausführung.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+::::::::::::::::::::::::::::::::::::::::: callout
 
-## Getting Started
+## Erste Schritte
 
-To get started, please follow the "[Setup Instructions](../learners/setup.md)
-to ensure you have a terminal and SSH application.
+Um zu beginnen, folgen Sie bitte den "[Setup Instructions](../learners/setup.md), um sicherzustellen, dass Sie ein Terminal und eine SSH-Anwendung haben.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Note that this is the draft HPC Carpentry release. Comments and feedback are
-welcome.
+Beachten Sie, dass dies der Entwurf der HPC Carpentry Version ist. Kommentare und Rückmeldungen sind willkommen.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+::::::::::::::::::::::::::::::::::::::::: callout
 
-## For Instructors
+## Für Ausbilder
 
-If you are teaching this lesson in a workshop, please see the
-[Instructor notes](instructors/instructor-notes.md).
+Wenn Sie diese Lektion in einem Workshop unterrichten, lesen Sie bitte die [Instructor notes](instructors/instructor-notes.md).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+

@@ -1,8 +1,9 @@
 ---
-title: Environment Variables
+title: Umgebungsvariablen
 teaching: 10
 exercises: 5
 ---
+
 
 ```{r, echo=FALSE}
 # Source the external configuration script
@@ -11,44 +12,34 @@ source("load_config.R")
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Understand how variables are implemented in the shell
-- Read the value of an existing variable
-- Create new variables and change their values
-- Change the behaviour of a program using an environment variable
-- Explain how the shell uses the `PATH` variable to search for executables
+- Verstehen, wie Variablen in der Shell implementiert werden
+- Liest den Wert einer bestehenden Variable
+- Erstellen Sie neue Variablen und ändern Sie deren Werte
+- Ändern Sie das Verhalten eines Programms mit Hilfe einer Umgebungsvariablen
+- Erkläre, wie die Shell die Variable `PATH` benutzt, um nach ausführbaren Dateien zu suchen
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How are variables set and accessed in the Unix shell?
-- How can I use variables to change how a program runs?
+- Wie werden Variablen in der Unix-Shell gesetzt und angesprochen?
+- Wie kann ich Variablen verwenden, um den Ablauf eines Programms zu verändern?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+::::::::::::::::::::::::::::::::::::::::: callout
 
 ## Episode provenance
 
-This episode has been remixed from the
-[Shell Extras episode on Shell Variables](https://github.com/carpentries-incubator/shell-extras/blob/gh-pages/_episodes/08-environment-variables.md)
-and the [HPC Shell episode on scripts](https://github.com/hpc-carpentry/hpc-shell/blob/gh-pages/_episodes/05-scripts.md).
+Diese Folge wurde aus der [Shell-Extras-Folge über Shell-Variablen] (https://github.com/carpentries-incubator/shell-extras/blob/gh-pages/_episodes/08-environment-variables.md) und der [HPC-Shell-Folge über Skripte] (https://github.com/hpc-carpentry/hpc-shell/blob/gh-pages/_episodes/05-scripts.md) neu zusammengestellt.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-The shell is just a program, and like other programs, it has variables.
-Those variables control its execution,
-so by changing their values
-you can change how the shell behaves (and with a little more effort how other
-programs behave).
+Die Shell ist nur ein Programm, und wie andere Programme auch, hat sie Variablen. Diese Variablen steuern ihre Ausführung, so dass Sie durch Ändern ihrer Werte das Verhalten der Shell (und mit etwas mehr Aufwand auch das Verhalten anderer Programme) beeinflussen können.
 
-Variables are a great way of saving information under a name you can access
-later. In programming languages like Python and R, variables can store pretty
-much anything you can think of. In the shell, they usually just store text. The
-best way to understand how they work is to see them in action.
+Variablen sind eine gute Möglichkeit, Informationen unter einem Namen zu speichern, auf den man später zugreifen kann. In Programmiersprachen wie Python und R können Variablen so ziemlich alles speichern, was man sich vorstellen kann. In der Shell speichern sie normalerweise nur Text. Der beste Weg, um zu verstehen, wie sie funktionieren, ist, sie in Aktion zu sehen.
 
-Let's start by running the command `set` and looking at some of the variables
-in a typical shell session:
+Beginnen wir damit, den Befehl `set` auszuführen und einige der Variablen in einer typischen Shell-Sitzung zu betrachten:
 
 ```bash
 set
@@ -67,23 +58,13 @@ USERNAME=vlad
 ...
 ```
 
-As you can see, there are quite a few — in fact,
-four or five times more than what's shown here.
-And yes, using `set` to *show* things might seem a little strange,
-even for Unix, but if you don't give it any arguments,
-it might as well show you things you *could* set.
+Wie Sie sehen können, gibt es ziemlich viele - tatsächlich vier- oder fünfmal so viele, wie hier gezeigt werden. Und ja, `set` zu benutzen, um Dinge *anzuzeigen*, mag ein wenig seltsam erscheinen, selbst für Unix, aber wenn Sie ihr keine Argumente geben, kann sie Ihnen auch Dinge zeigen, die Sie einstellen *könnten*.
 
-Every variable has a name.
-All shell variables' values are strings,
-even those (like `UID`) that look like numbers.
-It's up to programs to convert these strings to other types when necessary.
-For example, if a program wanted to find out how many processors the computer
-had, it would convert the value of the `NUMBER_OF_PROCESSORS` variable from a
-string to an integer.
+Jede Variable hat einen Namen. Alle Werte von Shell-Variablen sind Zeichenketten, auch solche (wie `UID`), die wie Zahlen aussehen. Es liegt an den Programmen, diese Zeichenketten bei Bedarf in andere Typen zu konvertieren. Wenn ein Programm zum Beispiel herausfinden wollte, wie viele Prozessoren der Computer hat, würde es den Wert der Variablen `NUMBER_OF_PROCESSORS` von einer Zeichenkette in eine ganze Zahl umwandeln.
 
-## Showing the Value of a Variable
+## Den Wert einer Variablen anzeigen
 
-Let's show the value of the variable `HOME`:
+Zeigen wir den Wert der Variable `HOME`:
 
 ```bash
 echo HOME
@@ -93,9 +74,7 @@ echo HOME
 HOME
 ```
 
-That just prints "HOME", which isn't what we wanted
-(though it is what we actually asked for).
-Let's try this instead:
+Das gibt nur "HOME" aus, was nicht das ist, was wir wollten (obwohl es das ist, wonach wir eigentlich gefragt haben). Versuchen wir stattdessen dies:
 
 ```bash
 echo $HOME
@@ -105,18 +84,11 @@ echo $HOME
 /home/vlad
 ```
 
-The dollar sign tells the shell that we want the *value* of the variable
-rather than its name.
-This works just like wildcards:
-the shell does the replacement *before* running the program we've asked for.
-Thanks to this expansion, what we actually run is `echo /home/vlad`,
-which displays the right thing.
+Das Dollarzeichen sagt der Shell, dass wir den *Wert* der Variable wollen und nicht ihren Namen. Das funktioniert genau wie bei Wildcards: die Shell ersetzt die Variable *vor* der Ausführung des gewünschten Programms. Dank dieser Erweiterung ist das, was wir tatsächlich ausführen, `echo /home/vlad`, was das Richtige anzeigt.
 
-## Creating and Changing Variables
+## Erstellen und Ändern von Variablen
 
-Creating a variable is easy — we just assign a value to a name using "="
-(we just have to remember that the syntax requires that there are *no* spaces
-around the `=`!):
+Eine Variable zu erstellen ist einfach - wir weisen einem Namen mit "=" einen Wert zu (wir müssen nur daran denken, dass die Syntax verlangt, dass *keine* Leerzeichen um das `=` herum sind!)
 
 ```bash
 SECRET_IDENTITY=Dracula
@@ -127,7 +99,7 @@ echo $SECRET_IDENTITY
 Dracula
 ```
 
-To change the value, just assign a new one:
+Um den Wert zu ändern, weisen Sie einfach einen neuen Wert zu:
 
 ```bash
 SECRET_IDENTITY=Camilla
@@ -138,73 +110,54 @@ echo $SECRET_IDENTITY
 Camilla
 ```
 
-## Environment variables
+## Umgebungsvariablen
 
-When  we ran the `set` command we saw there were a lot of variables whose names
-were in upper case. That's because, by convention, variables that are also
-available to use by *other* programs are given upper-case names. Such variables
-are called *environment variables* as they are shell variables that are defined
-for the current shell and are inherited by any child shells or processes.
+Als wir den `set`-Befehl ausführten, sahen wir, dass es eine Menge Variablen gab, deren Namen in Großbuchstaben geschrieben waren. Das liegt daran, dass Variablen, die auch von *anderen* Programmen verwendet werden können, in Großbuchstaben benannt werden. Solche Variablen werden *Umgebungsvariablen* genannt, da es sich um Shell-Variablen handelt, die für die aktuelle Shell definiert sind und an alle untergeordneten Shells oder Prozesse vererbt werden.
 
-To create an environment variable you need to `export` a shell variable. For
-example, to make our `SECRET_IDENTITY` available to other programs that we call
-from our shell we can do:
+Um eine Umgebungsvariable zu erstellen, müssen Sie eine Shell-Variable `export` angeben. Um zum Beispiel unser `SECRET_IDENTITY` für andere Programme, die wir von unserer Shell aus aufrufen, verfügbar zu machen, können wir folgendes tun:
 
 ```bash
 SECRET_IDENTITY=Camilla
 export SECRET_IDENTITY
 ```
 
-You can also create and export the variable in a single step:
+Sie können die Variable auch in einem einzigen Schritt erstellen und exportieren:
 
 ```bash
 export SECRET_IDENTITY=Camilla
 ```
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+::::::::::::::::::::::::::::::::::::::: challenge
 
-## Using environment variables to change program behaviour
+## Verwendung von Umgebungsvariablen zur Änderung des Programmverhaltens
 
-Set a shell variable `TIME_STYLE` to have a value of `iso` and check this
-value using the `echo` command.
+Setze eine Shell-Variable `TIME_STYLE` auf den Wert `iso` und prüfe diesen Wert mit dem Befehl `echo`.
 
-Now, run the command `ls` with the option `-l` (which gives a long format).
+Führen Sie nun den Befehl `ls` mit der Option `-l` aus (was ein langes Format ergibt).
 
-`export` the variable and rerun the `ls -l` command. Do you notice any
-difference?
+`export` die Variable und führen Sie den Befehl `ls -l` erneut aus. Bemerkst du einen Unterschied?
 
-:::::::::::::::  solution
+::::::::::::::: solution
 
-## Solution
+## Lösung
 
-The `TIME_STYLE` variable is not *seen* by `ls` until is exported, at which
-point it is used by `ls` to decide what date format to use when presenting
-the timestamp of files.
+Die Variable `TIME_STYLE` wird von `ls` nicht *gesehen*, bis sie exportiert wird. Zu diesem Zeitpunkt wird sie von `ls` benutzt, um zu entscheiden, welches Datumsformat bei der Darstellung des Zeitstempels von Dateien zu verwenden ist.
 
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-You can see the  complete set of environment variables in your current shell
-session with the command `env` (which returns a subset of what the command
-`set` gave us). **The complete set of environment variables is called
-your *runtime environment* and can affect the behaviour of the programs you
-run**.
+Sie können den kompletten Satz von Umgebungsvariablen in Ihrer aktuellen Shell-Sitzung mit dem Befehl `env` sehen (der eine Teilmenge dessen zurückgibt, was der Befehl `set` uns gegeben hat). **Der komplette Satz von Umgebungsvariablen wird als *Laufzeitumgebung* bezeichnet und kann das Verhalten der von Ihnen ausgeführten Programme beeinflussen**.
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+::::::::::::::::::::::::::::::::::::::: challenge
 
-## Job environment variables
+## Job-Umgebungsvariablen
 
-When ``r config$sched$name`` runs a job, it sets a number of environment
-variables for the job. One of these will let us check what directory our job
-script was submitted from. The `SLURM_SUBMIT_DIR` variable is set to the
-directory from which our job was submitted. Using the `SLURM_SUBMIT_DIR`
-variable, modify your job so that it prints out the location from which the
-job was submitted.
+Wenn ``r config$sched$name`` einen Job ausführt, setzt es eine Reihe von Umgebungsvariablen für den Job. Mit einer dieser Variablen können wir überprüfen, von welchem Verzeichnis aus unser Job-Skript eingereicht wurde. Die Variable `SLURM_SUBMIT_DIR` wird auf das Verzeichnis gesetzt, von dem aus unser Job eingereicht wurde. Ändern Sie Ihren Job mit Hilfe der Variable `SLURM_SUBMIT_DIR` so, dass er das Verzeichnis ausgibt, von dem aus der Job übermittelt wurde.
 
-:::::::::::::::  solution
+::::::::::::::: solution
 
-## Solution
+## Lösung
 
 ```bash
 `r config$remote$prompt` nano example-job.sh
@@ -226,35 +179,21 @@ echo ${SLURM_SUBMIT_DIR}
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-To remove a variable or environment variable you can use the `unset` command,
-for example:
+Um eine Variable oder Umgebungsvariable zu entfernen, können Sie zum Beispiel den Befehl `unset` verwenden:
 
 ```bash
 unset SECRET_IDENTITY
 ```
 
-## The `PATH` Environment Variable
+## Die `PATH` Umgebungsvariable
 
-Similarly, some environment variables (like `PATH`) store lists of values.
-In this case, the convention is to use a colon ':' as a separator.
-If a program wants the individual elements of such a list,
-it's the program's responsibility to split the variable's string value into
-pieces.
+In ähnlicher Weise speichern einige Umgebungsvariablen (wie `PATH`) Listen von Werten. In diesem Fall ist die Konvention, einen Doppelpunkt ':' als Trennzeichen zu verwenden. Wenn ein Programm die einzelnen Elemente einer solchen Liste benötigt, muss es den String-Wert der Variablen in Stücke aufteilen.
 
-Let's have a closer look at that `PATH` variable.
-Its value defines the shell's search path for executables,
-i.e., the list of directories that the shell looks in for runnable programs
-when you type in a program name without specifying what directory it is in.
+Schauen wir uns die Variable `PATH` genauer an. Ihr Wert definiert den Suchpfad der Shell für ausführbare Programme, d.h. die Liste der Verzeichnisse, in denen die Shell nach ausführbaren Programmen sucht, wenn Sie einen Programmnamen eintippen, ohne anzugeben, in welchem Verzeichnis er sich befindet.
 
-For example, when we type a command like `analyze`,
-the shell needs to decide whether to run `./analyze` or `/bin/analyze`.
-The rule it uses is simple:
-the shell checks each directory in the `PATH` variable in turn,
-looking for a program with the requested name in that directory.
-As soon as it finds a match, it stops searching and runs the program.
+Wenn wir zum Beispiel einen Befehl wie `analyze` eingeben, muss die Shell entscheiden, ob sie `./analyze` oder `/bin/analyze` ausführen soll. Die Regel, die sie dabei anwendet, ist einfach: Die Shell prüft jedes Verzeichnis in der Variablen `PATH` der Reihe nach und sucht nach einem Programm mit dem gewünschten Namen in diesem Verzeichnis. Sobald sie eine Übereinstimmung findet, hört sie auf zu suchen und führt das Programm aus.
 
-To show how this works,
-here are the components of `PATH` listed one per line:
+Um zu zeigen, wie das funktioniert, sind hier die Komponenten von `PATH` aufgelistet, eine pro Zeile:
 
 ```output
 /Users/vlad/bin
@@ -266,34 +205,19 @@ here are the components of `PATH` listed one per line:
 /usr/local/bin
 ```
 
-On our computer,
-there are actually three programs called `analyze`
-in three different directories:
-`/bin/analyze`,
-`/usr/local/bin/analyze`,
-and `/users/vlad/analyze`.
-Since the shell searches the directories in the order they're listed in `PATH`,
-it finds `/bin/analyze` first and runs that.
-Notice that it will *never* find the program `/users/vlad/analyze`
-unless we type in the full path to the program,
-since the directory `/users/vlad` isn't in `PATH`.
+Auf unserem Computer gibt es eigentlich drei Programme namens `analyze` in drei verschiedenen Verzeichnissen: `/bin/analyze`, `/usr/local/bin/analyze`, und `/users/vlad/analyze`. Da die Shell die Verzeichnisse in der Reihenfolge durchsucht, in der sie in `PATH` aufgelistet sind, findet sie `/bin/analyze` zuerst und führt es aus. Beachten Sie, dass sie das Programm `/users/vlad/analyze` *nie* finden wird, es sei denn, wir geben den vollständigen Pfad zum Programm ein, da das Verzeichnis `/users/vlad` nicht in `PATH` enthalten ist.
 
-This means that I can have executables in lots of different places as long as
-I remember that I need to to update my `PATH` so that my shell can find them.
+Das bedeutet, dass ich ausführbare Dateien an vielen verschiedenen Orten haben kann, solange ich daran denke, dass ich mein `PATH` aktualisieren muss, damit meine Shell sie finden kann.
 
-What if I want to run two different versions of the same program?
-Since they share the same name, if I add them both to my `PATH` the first one
-found will always win.
-In the next episode we'll learn how to use helper tools to help us manage our
-runtime environment to make that possible without us needing to do a lot of
-bookkeeping on what the value of `PATH` (and other important environment
-variables) is or should be.
+Was ist, wenn ich zwei verschiedene Versionen desselben Programms ausführen möchte? Da sie den gleichen Namen haben, wird, wenn ich sie beide zu meinem `PATH` hinzufüge, immer die erste gefundene Version gewinnen. In der nächsten Folge werden wir lernen, wie wir Hilfsmittel verwenden können, die uns bei der Verwaltung unserer Laufzeitumgebung helfen, damit dies möglich ist, ohne dass wir eine Menge Buchhaltung darüber führen müssen, welchen Wert `PATH` (und andere wichtige Umgebungsvariablen) haben oder haben sollten.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Shell variables are by default treated as strings
-- Variables are assigned using "`=`" and recalled using the variable's name prefixed by "`$`"
-- Use "`export`" to make an variable available to other programs
-- The `PATH` variable defines the shell's search path
+- Shell-Variablen werden standardmäßig als Zeichenketten behandelt
+- Variablen werden mit "`=`" zugewiesen und mit dem Variablennamen, dem "`$`" vorangestellt ist, abgerufen
+- Verwenden Sie "`export`", um eine Variable für andere Programme verfügbar zu machen
+- Die Variable `PATH` definiert den Suchpfad der Shell
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+

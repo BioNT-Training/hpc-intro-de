@@ -1,8 +1,9 @@
 ---
-title: Running a parallel job
+title: Ausführen eines parallelen Auftrags
 teaching: 30
 exercises: 60
 ---
+
 
 ```{r, echo=FALSE}
 # Source the external configuration script
@@ -11,71 +12,57 @@ source("load_config.R")
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Install a Python package using `pip`
-- Prepare a job submission script for the parallel executable.
-- Launch jobs with parallel execution.
-- Record and summarize the timing and accuracy of jobs.
-- Describe the relationship between job parallelism and performance.
+- Installieren Sie ein Python-Paket mit `pip`
+- Bereiten Sie ein Auftragsskript für das parallele Programm vor.
+- Starten Sie Aufträge mit paralleler Ausführung.
+- Aufzeichnung und Zusammenfassung des Zeitplans und der Genauigkeit von Aufträgen.
+- Beschreiben Sie die Beziehung zwischen Job-Parallelität und Leistung.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- How do we execute a task in parallel?
-- What benefits arise from parallel execution?
-- What are the limits of gains from execution in parallel?
+- Wie kann man eine Aufgabe parallel ausführen?
+- Welche Vorteile ergeben sich aus der parallelen Ausführung?
+- Wo liegen die Grenzen des Gewinns bei paralleler Ausführung?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-We now have the tools we need to run a multi-processor job. This is a very
-important aspect of HPC systems, as parallelism is one of the primary tools
-we have to improve the performance of computational tasks.
+Wir haben jetzt die Werkzeuge, die wir brauchen, um einen Multiprozessor-Job auszuführen. Dies ist ein sehr wichtiger Aspekt von HPC-Systemen, da die Parallelität eines der wichtigsten Werkzeuge ist, um die Leistung von Berechnungsaufgaben zu verbessern.
 
-If you disconnected, log back in to the cluster.
+Wenn Sie die Verbindung getrennt haben, melden Sie sich wieder am Cluster an.
 
 ```bash
 `r config$local$prompt` ssh `r config$remote$user`@`r config$remote$login`
 ```
 
-## Install the Amdahl Program
+## Installieren Sie das Amdahl-Programm
 
-With the Amdahl source code on the cluster, we can install it, which will
-provide access to the `amdahl` executable.
-Move into the extracted directory, then use the Package Installer for Python,
-or `pip`, to install it in your ("user") home directory:
+Nachdem wir den Amdahl-Quellcode auf dem Cluster haben, können wir ihn installieren, was den Zugriff auf die ausführbare Datei `amdahl` ermöglicht. Wechseln Sie in das extrahierte Verzeichnis und verwenden Sie dann den Package Installer für Python oder `pip`, um es in Ihrem ("user") Home-Verzeichnis zu installieren:
 
 ```bash
 `r config$remote$prompt` cd amdahl
 `r config$remote$prompt` python3 -m pip install --user .
 ```
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+::::::::::::::::::::::::::::::::::::::::: callout
 
-## Amdahl is Python Code
+## Amdahl ist Python Code
 
-The Amdahl program is written in Python, and installing or using it requires
-locating the `python3` executable on the login node.
-If it can't be found, try listing available modules using `module avail`,
-load the appropriate one, and try the command again.
+Das Amdahl-Programm ist in Python geschrieben, und um es zu installieren oder zu benutzen, muss die ausführbare Datei `python3` auf dem Anmeldeknoten gefunden werden. Wenn es nicht gefunden werden kann, versuchen Sie, die verfügbaren Module mit `module avail` aufzulisten, laden Sie das entsprechende Modul und versuchen Sie den Befehl erneut.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### MPI for Python
+### MPI für Python
 
-The Amdahl code has one dependency: **mpi4py**.
-If it hasn't already been installed on the cluster, `pip` will attempt to
-collect mpi4py from the Internet and install it for you.
-If this fails due to a one-way firewall, you must retrieve mpi4py on your
-local machine and upload it, just as we did for Amdahl.
+Der Amdahl-Code ist von einem Prozess abhängig: **mpi4py**. Wenn es nicht bereits auf dem Cluster installiert ist, wird `pip` versuchen, mpi4py aus dem Internet zu holen und für Sie zu installieren. Wenn dies aufgrund einer Einweg-Firewall fehlschlägt, müssen Sie mpi4py auf Ihrem lokalen Rechner abrufen und hochladen, so wie wir es für Amdahl getan haben.
 
-::::::::::::::::::::::::::::::::::::::  discussion
+:::::::::::::::::::::::::::::::::::::: discussion
 
-## Retrieve and Upload `mpi4py`
+## Abrufen und Hochladen von `mpi4py`
 
-If installing Amdahl failed because mpi4py could not be installed,
-retrieve the tarball from <https://github.com/mpi4py/mpi4py/tarball/master>
-then `rsync` it to the cluster, extract, and install:
+Wenn die Installation von Amdahl fehlgeschlagen ist, weil mpi4py nicht installiert werden konnte, rufen Sie das Tarball von <https://github.com/mpi4py/mpi4py/tarball/master> ab, synchronisieren Sie es anschließend per `rsync` mit dem Cluster, extrahieren Sie es und installieren Sie es:
 
 ```bash
 `r config$local$prompt` wget -O mpi4py.tar.gz https://github.com/mpi4py/mpi4py/releases/download/3.1.4/mpi4py-3.1.4.tar.gz
@@ -96,11 +83,11 @@ then `rsync` it to the cluster, extract, and install:
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::  discussion
+:::::::::::::::::::::::::::::::::::::: discussion
 
-## If `pip` Raises a Warning...
+## Wenn `pip` eine Warnung auslöst...
 
-`pip` may warn that your user package binaries are not in your PATH.
+`pip` kann eine Warnung ausgeben, dass die Binärdateien Ihres Benutzerpakets nicht in Ihrem PATH sind.
 
 ```warning
 WARNING: The script amdahl is installed in "${HOME}/.local/bin" which is
@@ -108,18 +95,13 @@ not on PATH. Consider adding this directory to PATH or, if you prefer to
 suppress this warning, use --no-warn-script-location.
 ```
 
-To check whether this warning is a problem, use `which` to search for the
-`amdahl` program:
+Um zu überprüfen, ob diese Warnung ein Problem darstellt, verwenden Sie `which`, um nach dem Programm `amdahl` zu suchen:
 
 ```bash
 `r config$remote$prompt` which amdahl
 ```
 
-If the command returns no output, displaying a new prompt, it means the file
-`amdahl` has not been found. You must update the environment variable named
-`PATH` to include the missing folder.
-Edit your shell configuration file as follows, then log off the cluster and
-back on again so it takes effect.
+Wenn der Befehl keine Ausgabe liefert und eine neue Eingabeaufforderung anzeigt, bedeutet dies, dass die Datei `amdahl` nicht gefunden wurde. Sie müssen die Umgebungsvariable mit dem Namen `PATH` aktualisieren, um den fehlenden Ordner aufzunehmen. Bearbeiten Sie Ihre Shell-Konfigurationsdatei wie folgt, melden Sie sich dann vom Cluster ab und wieder an, damit die Änderung wirksam wird.
 
 ```bash
 `r config$remote$prompt` nano ~/.bashrc
@@ -130,16 +112,14 @@ back on again so it takes effect.
 export PATH=${PATH}:${HOME}/.local/bin
 ```
 
-After logging back in to `r config$remote$login`, `which` should be able to
-find `amdahl` without difficulties.
-If you had to load a Python module, load it again.
+Nachdem Sie sich wieder bei `r config$remote$login` angemeldet haben, sollte `which` in der Lage sein, `amdahl` ohne Schwierigkeiten zu finden. Wenn Sie ein Python-Modul laden mussten, laden Sie es erneut.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## Help!
+## Hilfe!
 
-Many command-line programs include a "help" message. Try it with `amdahl`:
+Viele Befehlszeilenprogramme enthalten eine "Hilfe"-Meldung. Probieren Sie es mit `amdahl`:
 
 ```bash
 `r config$remote$prompt` amdahl --help
@@ -160,12 +140,11 @@ optional arguments:
                         Random jitter: a float between -1 and +1
 ```
 
-This message doesn't tell us much about what the program *does*, but it does
-tell us the important flags we might want to use when launching it.
+Diese Nachricht sagt nicht viel darüber aus, was das Programm *tut*, aber sie teilt uns die wichtigen Flags mit, die wir beim Start des Programms verwenden sollten.
 
-## Running the Job on a Compute Node
+## Ausführen des Jobs auf einem Rechenknoten
 
-Create a submission file, requesting one task on a single node, then launch it.
+Erstellen Sie eine Einreichungsdatei, die eine Aufgabe auf einem einzigen Knoten anfordert, und starten Sie sie.
 
 ```bash
 `r config$remote$prompt` nano serial-job.sh
@@ -190,22 +169,19 @@ amdahl
 `r config$remote$prompt` `r config$sched$submit$name` serial-job.sh
 ```
 
-As before, use the `r config$sched$name` status commands to check whether your job
-is running and when it ends:
+Verwenden Sie wie bisher die Statusbefehle `r config$sched$name`, um zu überprüfen, ob Ihr Auftrag läuft und wann er endet:
 
 ```bash
 `r config$remote$prompt` `r config$sched$status` `r config$sched$flag$user`
 ```
 
-Use `ls` to locate the output file. The `-t` flag sorts in
-reverse-chronological order: newest first. What was the output?
+Verwenden Sie `ls`, um die Ausgabedatei zu finden. Das Flag `-t` sortiert in umgekehrter chronologischer Reihenfolge: das Neueste zuerst. Wie lautete die Ausgabe?
 
-:::::::::::::::  spoiler
+::::::::::::::: spoiler
 
-## Read the Job Output
+## Lesen der Job-Ausgabe
 
-The cluster output should be written to a file in the folder you launched the
-job from. For example,
+Die Cluster-Ausgabe sollte in eine Datei in dem Ordner geschrieben werden, aus dem Sie den Job gestartet haben. Zum Beispiel,
 
 ```bash
 `r config$remote$prompt` ls -t
@@ -231,61 +207,34 @@ Total execution time (according to rank 0): 30.033 seconds
 
 :::::::::::::::::::::::::
 
-As we saw before, two of the `amdahl` program flags set the amount of work and
-the proportion of that work that is parallel in nature. Based on the output, we
-can see that the code uses a default of 30 seconds of work that is 85%
-parallel. The program ran for just over 30 seconds in total, and if we run the
-numbers, it is true that 15% of it was marked 'serial' and 85% was 'parallel'.
+Wie wir bereits gesehen haben, legen zwei der `amdahl`-Programmflags die Menge der Arbeit und den Anteil der parallelen Arbeit fest. Anhand der Ausgabe können wir sehen, dass der Code eine Vorgabe von 30 Sekunden Arbeit verwendet, die zu 85 % parallel ist. Das Programm lief insgesamt etwas über 30 Sekunden, und wenn wir die Zahlen durchgehen, stimmt es, dass 15 % davon als "seriell" und 85 % als "parallel" gekennzeichnet waren.
 
-Since we only gave the job one CPU, this job wasn't really parallel: the same
-processor performed the 'serial' work for 4.5 seconds, then the 'parallel' part
-for 25.5 seconds, and no time was saved. The cluster can do better, if we ask.
+Da wir dem Job nur eine CPU zugewiesen haben, war dieser Job nicht wirklich parallel: derselbe Prozessor führte die "serielle" Arbeit 4,5 Sekunden lang aus, dann den "parallelen" Teil 25,5 Sekunden lang, und es wurde keine Zeit gespart. Der Cluster kann es besser, wenn wir ihn fragen.
 
-## Running the Parallel Job
+## Ausführen des parallelen Jobs
 
-The `amdahl` program uses the Message Passing Interface (MPI) for parallelism
-\-- this is a common tool on HPC systems.
+Das Programm `amdahl` verwendet das Message Passing Interface (MPI) für die Parallelität - ein gängiges Werkzeug auf HPC-Systemen.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+::::::::::::::::::::::::::::::::::::::::: callout
 
-## What is MPI?
+## Was ist MPI?
 
-The Message Passing Interface is a set of tools which allow multiple tasks
-running simultaneously to communicate with each other.
-Typically, a single executable is run multiple times, possibly on different
-machines, and the MPI tools are used to inform each instance of the
-executable about its sibling processes, and which instance it is.
-MPI also provides tools to allow communication between instances to
-coordinate work, exchange information about elements of the task, or to
-transfer data.
-An MPI instance typically has its own copy of all the local variables.
+Das Message Passing Interface ist eine Reihe von Werkzeugen, die es mehreren gleichzeitig laufenden Aufgaben ermöglichen, miteinander zu kommunizieren. Typischerweise wird eine einzelne ausführbare Datei mehrfach ausgeführt, möglicherweise auf verschiedenen Rechnern, und die MPI-Werkzeuge werden verwendet, um jede Instanz der ausführbaren Datei über ihre Geschwisterprozesse und die jeweilige Instanz zu informieren. MPI bietet auch Werkzeuge für die Kommunikation zwischen Instanzen, um die Arbeit zu koordinieren, Informationen über Elemente der Aufgabe auszutauschen oder Daten zu übertragen. Eine MPI-Instanz hat normalerweise ihre eigene Kopie aller lokalen Variablen.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-While MPI-aware executables can generally be run as stand-alone programs, in
-order for them to run in parallel they must use an MPI *run-time environment*,
-which is a specific implementation of the MPI *standard*.
-To activate the MPI environment, the program should be started via a command
-such as `mpiexec` (or `mpirun`, or `srun`, etc. depending on the MPI run-time
-you need to use), which will ensure that the appropriate run-time support for
-parallelism is included.
+Während MPI-fähige ausführbare Programme im Allgemeinen als eigenständige Programme ausgeführt werden können, müssen sie, um parallel ausgeführt werden zu können, eine MPI *Laufzeitumgebung* verwenden, bei der es sich um eine spezielle Implementierung des MPI *Standards* handelt. Um die MPI-Umgebung zu aktivieren, sollte das Programm mit einem Befehl wie `mpiexec` (oder `mpirun`, oder `srun`, usw., je nach der zu verwendenden MPI-Laufzeitumgebung) gestartet werden, wodurch sichergestellt wird, dass die entsprechende Laufzeitunterstützung für Parallelität enthalten ist.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+::::::::::::::::::::::::::::::::::::::::: callout
 
-## MPI Runtime Arguments
+## MPI Laufzeitargumente
 
-On their own, commands such as `mpiexec` can take many arguments specifying
-how many machines will participate in the execution,
-and you might need these if you would like to run an MPI program on your
-own (for example, on your laptop).
-In the context of a queuing system, however, it is frequently the case that
-MPI run-time will obtain the necessary parameters from the queuing system,
-by examining the environment variables set when the job is launched.
+Befehle wie `mpiexec` können viele Argumente annehmen, die angeben, wie viele Maschinen an der Ausführung teilnehmen sollen, und Sie benötigen diese Argumente, wenn Sie ein MPI-Programm alleine ausführen möchten (z. B. auf Ihrem Laptop). Im Zusammenhang mit einem Warteschlangensystem ist es jedoch häufig der Fall, dass die MPI-Laufzeit die notwendigen Parameter vom Warteschlangensystem erhält, indem sie die Umgebungsvariablen untersucht, die beim Start des Auftrags gesetzt wurden.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Let's modify the job script to request more cores and use the MPI run-time.
+Ändern wir das Jobskript, um mehr Kerne anzufordern und die MPI-Laufzeit zu nutzen.
 
 ```bash
 `r config$remote$prompt` cp serial-job.sh parallel-job.sh
@@ -309,15 +258,13 @@ module load SciPy-bundle
 mpiexec amdahl
 ```
 
-Then submit your job. Note that the submission command has not really changed
-from how we submitted the serial job: all the parallel settings are in the
-batch file rather than the command line.
+Senden Sie dann Ihren Auftrag ab. Beachten Sie, dass sich der Übermittlungsbefehl im Vergleich zur Übermittlung des seriellen Auftrags nicht wirklich geändert hat: Alle parallelen Einstellungen befinden sich in der Batch-Datei und nicht in der Befehlszeile.
 
 ```bash
 `r config$remote$prompt` `r config$sched$submit$name` parallel-job.sh
 ```
 
-As before, use the status commands to check when your job runs.
+Verwenden Sie wie bisher die Statusbefehle, um zu überprüfen, wann Ihr Auftrag läuft.
 
 ```bash
 `r config$remote$prompt` ls -t
@@ -344,34 +291,26 @@ which should take 10.875 seconds with 0.850 parallel proportion of the workload.
 Total execution time (according to rank 0): 10.888 seconds
 ```
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+::::::::::::::::::::::::::::::::::::::: challenge
 
-## Is it 4× faster?
+## Ist es 4× schneller?
 
-The parallel job received 4× more processors than the serial job:
-does that mean it finished in ¼ the time?
+Der parallele Auftrag erhielt 4× mehr Prozessoren als der serielle Auftrag: Bedeutet das, dass er in ¼ der Zeit fertig wurde?
 
-:::::::::::::::  solution
+::::::::::::::: solution
 
-## Solution
+## Lösung
 
-The parallel job did take *less* time: 11 seconds is better than 30!
-But it is only a 2.7× improvement, not 4×.
+Der parallele Auftrag hat *weniger* Zeit benötigt: 11 Sekunden sind besser als 30! Aber es ist nur eine 2,7-fache Verbesserung, nicht eine 4-fache.
 
-Look at the job output:
+Sehen Sie sich die Ausgabe des Jobs an:
 
-- While "process 0" did serial work, processes 1 through 3 did their
-  parallel work.
-- While process 0 caught up on its parallel work,
-  the rest did nothing at all.
+- Während "Prozess 0" serielle Arbeit verrichtete, erledigten die Prozesse 1 bis 3 ihre parallele Arbeit.
+- Während Prozess 0 seine parallele Arbeit nachholte, tat der Rest gar nichts.
 
-Process 0 always has to finish its serial task before it can start on the
-parallel work. This sets a lower limit on the amount of time this job will
-take, no matter how many cores you throw at it.
+Prozess 0 muss immer erst seine serielle Aufgabe beenden, bevor er mit der parallelen Arbeit beginnen kann. Damit wird eine untere Grenze für die Zeit gesetzt, die diese Aufgabe benötigt, egal wie viele Kerne man ihr zuordnet.
 
-This is the basic principle behind [Amdahl's Law][amdahl], which is one way
-of predicting improvements in execution time for a **fixed** workload that
-can be subdivided and run in parallel to some extent.
+Dies ist das Grundprinzip des [Amdahl'schen Gesetzes][amdahl], das eine Möglichkeit ist, Verbesserungen der Ausführungszeit für eine **feste** Arbeitslast vorherzusagen, die bis zu einem gewissen Grad unterteilt und parallel ausgeführt werden kann.
 
 
 
@@ -379,32 +318,21 @@ can be subdivided and run in parallel to some extent.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-## How Much Does Parallel Execution Improve Performance?
+## Wie stark verbessert die parallele Ausführung die Leistung?
 
-In theory, dividing up a perfectly parallel calculation among *n* MPI processes
-should produce a decrease in total run time by a factor of *n*.
-As we have just seen, real programs need some time for the MPI processes to
-communicate and coordinate, and some types of calculations can't be subdivided:
-they only run effectively on a single CPU.
+Theoretisch sollte die Aufteilung einer perfekt parallelen Berechnung auf *n* MPI-Prozesse zu einer Verringerung der Gesamtlaufzeit um den Faktor *n* führen. Wie wir soeben gesehen haben, benötigen reale Programme eine gewisse Zeit, damit die MPI-Prozesse kommunizieren und sich koordinieren können, und einige Arten von Berechnungen können nicht aufgeteilt werden: Sie laufen effektiv nur auf einer einzigen CPU.
 
-Additionally, if the MPI processes operate on different physical CPUs in the
-computer, or across multiple compute nodes, even more time is required for
-communication than it takes when all processes operate on a single CPU.
+Wenn die MPI-Prozesse auf verschiedenen physischen CPUs im Computer oder auf mehreren Rechenknoten arbeiten, wird sogar mehr Zeit für die Kommunikation benötigt, als wenn alle Prozesse auf einer einzigen CPU arbeiten.
 
-In practice, it's common to evaluate the parallelism of an MPI program by
+In der Praxis ist es üblich, die Parallelität eines MPI-Programms wie folgt zu bewerten
 
-- running the program across a range of CPU counts,
-- recording the execution time on each run,
-- comparing each execution time to the time when using a single CPU.
+- das Programm über einen Bereich von CPU-Zahlen laufen,
+- Aufzeichnung der Ausführungszeit bei jedem Durchlauf,
+- Vergleich der jeweiligen Ausführungszeit mit der Zeit bei Verwendung einer einzigen CPU.
 
-Since "more is better" -- improvement is easier to interpret from increases in
-some quantity than decreases -- comparisons are made using the speedup factor
-*S*, which is calculated as the single-CPU execution time divided by the multi-CPU
-execution time. For a perfectly parallel program, a plot of the speedup *S*
-versus the number of CPUs *n* would give a straight line, *S* = *n*.
+Da "mehr besser ist" - eine Verbesserung ist leichter zu interpretieren, wenn eine bestimmte Größe zunimmt, als wenn sie abnimmt - werden Vergleiche mit dem Beschleunigungsfaktor *S* durchgeführt, der als die Ausführungszeit auf einer CPU geteilt durch die Ausführungszeit auf mehreren CPUs berechnet wird. Für ein perfekt paralleles Programm würde ein Diagramm des Beschleunigungsfaktors *S* gegen die Anzahl der CPUs *n* eine gerade Linie ergeben, *S* = *n*.
 
-Let's run one more job, so we can see how close to a straight line our `amdahl`
-code gets.
+Lassen wir einen weiteren Job laufen, damit wir sehen können, wie nahe unser `amdahl`-Code einer geraden Linie kommt.
 
 ```bash
 `r config$remote$prompt` nano parallel-job.sh
@@ -427,15 +355,13 @@ module load SciPy-bundle
 mpiexec amdahl
 ```
 
-Then submit your job. Note that the submission command has not really changed
-from how we submitted the serial job: all the parallel settings are in the
-batch file rather than the command line.
+Senden Sie dann Ihren Auftrag ab. Beachten Sie, dass sich der Übermittlungsbefehl im Vergleich zur Übermittlung des seriellen Auftrags nicht wirklich geändert hat: Alle parallelen Einstellungen befinden sich in der Batch-Datei und nicht in der Befehlszeile.
 
 ```bash
 `r config$remote$prompt` `r config$sched$submit$name` parallel-job.sh
 ```
 
-As before, use the status commands to check when your job runs.
+Verwenden Sie wie bisher die Statusbefehle, um zu überprüfen, wann Ihr Auftrag läuft.
 
 ```bash
 `r config$remote$prompt` ls -t
@@ -465,65 +391,48 @@ which should take 7.688 seconds with 0.850 parallel proportion of the workload.
 Total execution time (according to rank 0): 7.697 seconds
 ```
 
-::::::::::::::::::::::::::::::::::::::  discussion
+:::::::::::::::::::::::::::::::::::::: discussion
 
-## Non-Linear Output
+## Nicht-lineare Ausgabe
 
-When we ran the job with 4 parallel workers, the serial job wrote its output
-first, then the parallel processes wrote their output, with process 0 coming
-in first and last.
+Wenn wir den Job mit 4 parallelen Arbeitern ausgeführt haben, hat der serielle Job zuerst seine Ausgabe geschrieben, dann haben die parallelen Prozesse ihre Ausgabe geschrieben, wobei Prozess 0 zuerst und zuletzt kam.
 
-With 8 workers, this is not the case: since the parallel workers take less
-time than the serial work, it is hard to say which process will write its
-output first, except that it will *not* be process 0!
+Bei 8 Workern ist dies nicht der Fall: Da die parallelen Worker weniger Zeit benötigen als die seriellen, ist es schwer zu sagen, welcher Prozess seine Ausgabe zuerst schreiben wird, außer dass es *nicht* Prozess 0 sein wird!
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Now, let's summarize the amount of time it took each job to run:
+Fassen wir nun die Zeit zusammen, die jeder Job für seine Ausführung benötigt hat:
 
 | Number of CPUs | Runtime (sec) |
 | -------------- | ------------- |
-| 1              | 30\.033        |
-| 4              | 10\.888        |
-| 8              | 7\.697         |
+| 1              | 30\.033       |
+| 4              | 10\.888       |
+| 8              | 7\.697        |
 
-Then, use the first row to compute speedups $S$, using Python as a command-line
-calculator and the formula
+Dann verwenden Sie die erste Zeile, um die Geschwindigkeitssteigerung $S$ zu berechnen, indem Sie Python als Befehlszeilenrechner und die Formel
 
-$$
-S(t_{n}) = \frac{t_{1}}{t_{n}}
-$$
+$$ S(t_{n}) = \frac{t_{1}}{t_{n}} $$
 
 ```bash
 `r config$remote$prompt` for n in 30.033 10.888 7.697; do python3 -c "print(30.033 / $n)"; done
 ```
 
-| Number of CPUs | Speedup       | Ideal |
-| -------------- | ------------- | ----- |
-| 1              | 1\.0           | 1     |
-| 4              | 2\.75          | 4     |
-| 8              | 3\.90          | 8     |
+| Number of CPUs | Speedup | Ideal |
+| -------------- | ------- | ----- |
+| 1              | 1\.0    | 1     |
+| 4              | 2\.75   | 4     |
+| 8              | 3\.90   | 8     |
 
-The job output files have been telling us that this program is performing 85%
-of its work in parallel, leaving 15% to run in serial. This seems reasonably
-high, but our quick study of speedup shows that in order to get a 4× speedup,
-we have to use 8 or 9 processors in parallel. In real programs, the speedup
-factor is influenced by
+Aus den Job-Ausgabedateien geht hervor, dass dieses Programm 85 % seiner Arbeit parallel ausführt und 15 % seriell abläuft. Dies scheint recht hoch zu sein, aber unsere schnelle Untersuchung der Beschleunigung zeigt, dass wir 8 oder 9 Prozessoren parallel verwenden müssen, um eine 4fache Beschleunigung zu erreichen. In realen Programmen wird der Beschleunigungsfaktor beeinflusst durch
 
-- CPU design
-- communication network between compute nodes
-- MPI library implementations
-- details of the MPI program itself
+- CPU-Design
+- Kommunikationsnetz zwischen Rechenknoten
+- Implementierungen der MPI-Bibliothek
+- Einzelheiten zum MPI-Programm selbst
 
-Using Amdahl's Law, you can prove that with this program, it is *impossible*
-to reach 8× speedup, no matter how many processors you have on hand. Details of
-that analysis, with results to back it up, are left for the next class in the
-HPC Carpentry workshop, *HPC Workflows*.
+Mit Hilfe des Amdahlschen Gesetzes können Sie beweisen, dass es *unmöglich* ist, mit diesem Programm eine 8-fache Beschleunigung zu erreichen, egal wie viele Prozessoren Sie zur Verfügung haben. Die Einzelheiten dieser Analyse mit den entsprechenden Ergebnissen werden in der nächsten Klasse des HPC Carpentry Workshops *HPC Workflows* behandelt.
 
-In an HPC environment, we try to reduce the execution time for all types of
-jobs, and MPI is an extremely common way to combine dozens, hundreds, or
-thousands of CPUs into solving a single problem. To learn more about
-parallelization, see the [parallel novice lesson][parallel-novice] lesson.
+In einer HPC-Umgebung versuchen wir, die Ausführungszeit für alle Arten von Aufträgen zu reduzieren, und MPI ist eine sehr gängige Methode, um Dutzende, Hunderte oder Tausende von CPUs zur Lösung eines einzigen Problems zu kombinieren. Um mehr über Parallelisierung zu erfahren, lesen Sie die Lektion [parallel-novice][parallel-novice].
 
 
 [amdahl]: https://en.wikipedia.org/wiki/Amdahl\'s_law
@@ -532,8 +441,10 @@ parallelization, see the [parallel novice lesson][parallel-novice] lesson.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Parallel programming allows applications to take advantage of parallel hardware.
-- The queuing system facilitates executing parallel tasks.
-- Performance improvements from parallel execution do not scale linearly.
+- Parallele Programmierung ermöglicht es Anwendungen, die Vorteile paralleler Hardware zu nutzen.
+- Das Warteschlangensystem erleichtert die Ausführung von parallelen Aufgaben.
+- Leistungssteigerungen durch parallele Ausführung skalieren nicht linear.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
