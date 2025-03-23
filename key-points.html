@@ -244,7 +244,7 @@
 <div class="accordion accordion-flush" id="accordionFlush2">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading2">
-        <a href="10-hpc-intro.html">1. Why use a Cluster?</a>
+        <a href="10-hpc-intro.html">1. Warum einen Cluster verwenden?</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -256,7 +256,7 @@
 <div class="accordion accordion-flush" id="accordionFlush3">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading3">
-        <a href="11-connecting.html">2. Connecting to a remote HPC system</a>
+        <a href="11-connecting.html">2. Verbinden mit einem entfernten HPC-System</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -268,7 +268,7 @@
 <div class="accordion accordion-flush" id="accordionFlush4">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading4">
-        <a href="12-cluster.html">3. Working on a remote HPC system</a>
+        <a href="12-cluster.html">3. Arbeiten auf einem entfernten HPC-System</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -280,7 +280,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="13-scheduler.html">4. Scheduler Fundamentals</a>
+        <a href="13-scheduler.html">4. Grundlagen des Schedulers</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -292,7 +292,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="14-environment-variables.html">5. Environment Variables</a>
+        <a href="14-environment-variables.html">5. Umgebungsvariablen</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -304,7 +304,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="15-modules.html">6. Accessing software via Modules</a>
+        <a href="15-modules.html">6. Zugriff auf Software über Module</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -316,7 +316,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="16-transferring-files.html">7. Transferring files with remote computers</a>
+        <a href="16-transferring-files.html">7. Übertragen von Dateien mit entfernten Computern</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -328,7 +328,7 @@
 <div class="accordion accordion-flush" id="accordionFlush9">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading9">
-        <a href="17-parallel.html">8. Running a parallel job</a>
+        <a href="17-parallel.html">8. Ausführen eines parallelen Auftrags</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -340,7 +340,7 @@
 <div class="accordion accordion-flush" id="accordionFlush10">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading10">
-        <a href="18-resources.html">9. Using resources effectively</a>
+        <a href="18-resources.html">9. Effektive Nutzung von Ressourcen</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -352,7 +352,7 @@
 <div class="accordion accordion-flush" id="accordionFlush11">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading11">
-        <a href="19-responsibility.html">10. Using shared resources responsibly</a>
+        <a href="19-responsibility.html">10. Gemeinsame Ressourcen verantwortungsvoll nutzen</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -416,92 +416,101 @@
     <main id="main-content" class="main-content"><div class="container lesson-content">
         
         
-<section id="10-hpc-intro"><h2 class="section-heading"><a href="10-hpc-intro.html">Why use a Cluster?</a></h2>
+<section id="10-hpc-intro"><h2 class="section-heading"><a href="10-hpc-intro.html">Warum einen Cluster verwenden?</a></h2>
 <hr class="half-width">
 <ul>
-<li>High Performance Computing (HPC) typically involves connecting to
-very large computing systems elsewhere in the world.</li>
-<li>These other systems can be used to do work that would either be
-impossible or much slower on smaller systems.</li>
-<li>HPC resources are shared by multiple users.</li>
-<li>The standard method of interacting with such systems is via a
-command line interface.</li>
-</ul></section><section id="11-connecting"><h2 class="section-heading"><a href="11-connecting.html">Connecting to a remote HPC system</a></h2>
+<li>Beim High Performance Computing (HPC) wird in der Regel eine
+Verbindung zu sehr großen Rechensystemen an anderen Orten der Welt
+hergestellt.</li>
+<li>Diese anderen Systeme können für Arbeiten verwendet werden, die auf
+kleineren Systemen entweder unmöglich oder sehr viel langsamer
+wären.</li>
+<li>HPC-Ressourcen werden von mehreren Benutzern gemeinsam genutzt.</li>
+<li>Die Standardmethode zur Interaktion mit solchen Systemen erfolgt
+über eine Befehlszeilenschnittstelle.</li>
+</ul></section><section id="11-connecting"><h2 class="section-heading"><a href="11-connecting.html">Verbinden mit einem entfernten HPC-System</a></h2>
 <hr class="half-width">
 <ul>
-<li>An HPC system is a set of networked machines.</li>
-<li>HPC systems typically provide login nodes and a set of worker
-nodes.</li>
-<li>The resources found on independent (worker) nodes can vary in volume
-and type (amount of RAM, processor architecture, availability of network
-mounted filesystems, etc.).</li>
-<li>Files saved on one node are available on all nodes.</li>
-</ul></section><section id="12-cluster"><h2 class="section-heading"><a href="12-cluster.html">Working on a remote HPC system</a></h2>
+<li>Ein HPC-System ist eine Gruppe von vernetzten Maschinen.</li>
+<li>HPC-Systeme bieten typischerweise Login-Knoten und eine Reihe von
+Worker-Knoten.</li>
+<li>Die Ressourcen auf den unabhängigen (Arbeits-)Knoten können in
+Umfang und Art variieren (Menge des Arbeitsspeichers,
+Prozessorarchitektur, Verfügbarkeit von über das Netzwerk eingebundenen
+Dateisystemen usw.).</li>
+<li>Dateien, die auf einem Knoten gespeichert sind, sind auf allen
+Knoten verfügbar.</li>
+</ul></section><section id="12-cluster"><h2 class="section-heading"><a href="12-cluster.html">Arbeiten auf einem entfernten HPC-System</a></h2>
 <hr class="half-width">
 <ul>
-<li>“An HPC system is a set of networked machines.”</li>
-<li>“HPC systems typically provide login nodes and a set of worker
-nodes.”</li>
-<li>“The resources found on independent (worker) nodes can vary in
-volume and type (amount of RAM, processor architecture, availability of
-network mounted filesystems, etc.).”</li>
-<li>“Files saved on one node are available on all nodes.”</li>
-</ul></section><section id="13-scheduler"><h2 class="section-heading"><a href="13-scheduler.html">Scheduler Fundamentals</a></h2>
+<li>“Ein HPC-System ist eine Gruppe von vernetzten Maschinen.”</li>
+<li>“HPC-Systeme bieten normalerweise Anmeldeknoten und eine Reihe von
+Arbeitsknoten.”</li>
+<li>“Die Ressourcen, die sich auf unabhängigen (Arbeits-)Knoten
+befinden, können in Umfang und Art variieren (Menge des
+Arbeitsspeichers, Prozessorarchitektur, Verfügbarkeit von im Netzwerk
+eingebundenen Dateisystemen usw.).”</li>
+<li>“Dateien, die auf einem Knoten gespeichert sind, sind auf allen
+Knoten verfügbar.”</li>
+</ul></section><section id="13-scheduler"><h2 class="section-heading"><a href="13-scheduler.html">Grundlagen des Schedulers</a></h2>
 <hr class="half-width">
 <ul>
-<li>The scheduler handles how compute resources are shared between
-users.</li>
-<li>A job is just a shell script.</li>
-<li>Request <em>slightly</em> more resources than you will need.</li>
-</ul></section><section id="14-environment-variables"><h2 class="section-heading"><a href="14-environment-variables.html">Environment Variables</a></h2>
+<li>Der Scheduler verwaltet die Aufteilung der Rechenressourcen zwischen
+den Benutzern.</li>
+<li>Ein Job ist einfach ein Shell-Skript.</li>
+<li>Fordern Sie <em>geringfügig</em> mehr Ressourcen an, als Sie
+brauchen werden.</li>
+</ul></section><section id="14-environment-variables"><h2 class="section-heading"><a href="14-environment-variables.html">Umgebungsvariablen</a></h2>
 <hr class="half-width">
 <ul>
-<li>Shell variables are by default treated as strings</li>
-<li>Variables are assigned using “<code>=</code>” and recalled using the
-variable’s name prefixed by “<code>$</code>”</li>
-<li>Use “<code>export</code>” to make an variable available to other
-programs</li>
-<li>The <code>PATH</code> variable defines the shell’s search path</li>
-</ul></section><section id="15-modules"><h2 class="section-heading"><a href="15-modules.html">Accessing software via Modules</a></h2>
+<li>Shell-Variablen werden standardmäßig als Zeichenketten
+behandelt</li>
+<li>Variablen werden mit “<code>=</code>” zugewiesen und mit dem
+Variablennamen, dem “<code>$</code>” vorangestellt ist, abgerufen</li>
+<li>Verwenden Sie “<code>export</code>”, um eine Variable für andere
+Programme verfügbar zu machen</li>
+<li>Die Variable <code>PATH</code> definiert den Suchpfad der Shell</li>
+</ul></section><section id="15-modules"><h2 class="section-heading"><a href="15-modules.html">Zugriff auf Software über Module</a></h2>
 <hr class="half-width">
 <ul>
-<li>Load software with <code>module load softwareName</code>.</li>
-<li>Unload software with <code>module unload</code>
+<li>Software mit <code>module load softwareName</code> laden.</li>
+<li>Entladen von Software mit <code>module unload</code>
 </li>
-<li>The module system handles software versioning and package conflicts
-for you automatically.</li>
-</ul></section><section id="16-transferring-files"><h2 class="section-heading"><a href="16-transferring-files.html">Transferring files with remote computers</a></h2>
+<li>Das Modulsystem kümmert sich automatisch um Softwareversionen und
+Paketkonflikte.</li>
+</ul></section><section id="16-transferring-files"><h2 class="section-heading"><a href="16-transferring-files.html">Übertragen von Dateien mit entfernten Computern</a></h2>
 <hr class="half-width">
 <ul>
 <li>
-<code>wget</code> and <code>curl -O</code> download a file from the
-internet.</li>
+<code>wget</code> und <code>curl -O</code> laden eine Datei aus dem
+Internet herunter.</li>
 <li>
-<code>scp</code> and <code>rsync</code> transfer files to and from
-your computer.</li>
-<li>You can use an SFTP client like FileZilla to transfer files through
-a GUI.</li>
-</ul></section><section id="17-parallel"><h2 class="section-heading"><a href="17-parallel.html">Running a parallel job</a></h2>
+<code>scp</code> und <code>rsync</code> übertragen Dateien zu und
+von Ihrem Computer.</li>
+<li>Sie können einen SFTP-Client wie FileZilla verwenden, um Dateien
+über eine grafische Benutzeroberfläche zu übertragen.</li>
+</ul></section><section id="17-parallel"><h2 class="section-heading"><a href="17-parallel.html">Ausführen eines parallelen Auftrags</a></h2>
 <hr class="half-width">
 <ul>
-<li>Parallel programming allows applications to take advantage of
-parallel hardware.</li>
-<li>The queuing system facilitates executing parallel tasks.</li>
-<li>Performance improvements from parallel execution do not scale
-linearly.</li>
-</ul></section><section id="18-resources"><h2 class="section-heading"><a href="18-resources.html">Using resources effectively</a></h2>
+<li>Parallele Programmierung ermöglicht es Anwendungen, die Vorteile
+paralleler Hardware zu nutzen.</li>
+<li>Das Warteschlangensystem erleichtert die Ausführung von parallelen
+Aufgaben.</li>
+<li>Leistungssteigerungen durch parallele Ausführung skalieren nicht
+linear.</li>
+</ul></section><section id="18-resources"><h2 class="section-heading"><a href="18-resources.html">Effektive Nutzung von Ressourcen</a></h2>
 <hr class="half-width">
 <ul>
-<li>Accurate job scripts help the queuing system efficiently allocate
-shared resources.</li>
-</ul></section><section id="19-responsibility"><h2 class="section-heading"><a href="19-responsibility.html">Using shared resources responsibly</a></h2>
+<li>Präzise Jobskripte helfen dem Warteschlangensystem bei der
+effizienten Zuweisung gemeinsamer Ressourcen.</li>
+</ul></section><section id="19-responsibility"><h2 class="section-heading"><a href="19-responsibility.html">Gemeinsame Ressourcen verantwortungsvoll nutzen</a></h2>
 <hr class="half-width">
 <ul>
-<li>Be careful how you use the login node.</li>
-<li>Your data on the system is your responsibility.</li>
-<li>Plan and test large data transfers.</li>
-<li>It is often best to convert many files to a single archive file
-before transferring.</li>
+<li>Seien Sie vorsichtig, wie Sie den Login-Knoten verwenden.</li>
+<li>Für Ihre Daten auf dem System sind Sie selbst verantwortlich.</li>
+<li>Planen und Testen großer Datenübertragungen.</li>
+<li>Es ist oft am besten, viele Dateien vor der Übertragung in eine
+einzige Archivdatei zu konvertieren.</li>
 </ul></section>
 </div>
     </main>
@@ -550,8 +559,8 @@ before transferring.</li>
   "url": "https://ocaisa.github.io/probable_pancake/key-points.html",
   "identifier": "https://ocaisa.github.io/probable_pancake/key-points.html",
   "dateCreated": "2017-03-24",
-  "dateModified": "2025-03-20",
-  "datePublished": "2025-03-20"
+  "dateModified": "2025-03-23",
+  "datePublished": "2025-03-23"
 }
 
   </script><script>
