@@ -1,5 +1,5 @@
 ---
-title: Taking Your Next Steps
+title: Ihre nächsten Schritte
 teaching: 10
 exercises: 60
 questions:
@@ -13,144 +13,150 @@ keypoints:
 - Understand how you can access help and support to use HPC.
 ---
 
-Now you know enough about HPC to explore how to use it for your work or to
-understand what its potential benefits are you. You may also have ideas around
-where the barriers and difficulties may lie and have further questions on how
-you can start using and/or trying HPC in your area.
 
-This session is designed to give you the opportunity to explore these questions
-and issues. The instructors and helpers on the course will be on hand to answer
-your questions and discuss next steps with you.
+Jetzt wissen Sie genug über HPC, um zu erforschen, wie Sie es für Ihre Arbeit nutzen
+können, oder um zu verstehen, welche potenziellen Vorteile es für Sie hat. Vielleicht
+haben Sie auch Ideen, wo die Hindernisse und Schwierigkeiten liegen könnten und haben
+weitere Fragen, wie Sie HPC in Ihrem Bereich einsetzen und/oder ausprobieren können.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+Diese Sitzung soll Ihnen die Möglichkeit geben, diese Fragen und Probleme zu
+untersuchen. Die Dozenten und Helfer des Kurses werden vor Ort sein, um Ihre Fragen zu
+beantworten und die nächsten Schritte mit Ihnen zu besprechen.
 
-## Potential Discussions
+::::::::::::::::::::::::::::::::::::::::: callout
 
-Things you could discuss with the instructors and helpers could include:
+## Mögliche Erörterungen
 
-- Your computational workflow and where advanced computing could help
-- How to get access to facilities for your work
-- How to get help and support to get your work running using advanced
-  computing. For example, software development, further training, access to
-  local expertise
-  
+Zu den Dingen, die Sie mit den Ausbildern und Helfern diskutieren könnten, gehören:
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-## Options for This Session
-
-There are a number of different options for practical work during this session.
-The challenges below include: exploring your own work; an extended example
-using a parallel HPC application; an extended example using high throughput
-computing on multiple serial analyses. If you have something else you want to
-use the session for (e.g. to discuss things with the instructors/helpers as
-described above) then please feel free to do this. The idea of the session is
-to help you bootstrap your use of advanced computing and this will differ from
-individual to individual!
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Exploring Your Work Using HPC
-
-If you have a practical example of something from your area of work that you
-would like help with getting up and running on an HPC system or exploring the
-performance of on an HPC system, this is great! Please feel free to discuss
-this with us and ask questions (both technical and non-technical).
-
+- Ihr Arbeitsablauf und wo fortgeschrittenes Rechnen helfen könnte
+- Wie erhalten Sie Zugang zu Einrichtungen für Ihre Arbeit?
+- Wie erhalten Sie Hilfe und Unterstützung, um Ihre Arbeit mit Hilfe von Advanced
+  Computing zum Laufen zu bringen. Zum Beispiel Softwareentwicklung, Fortbildung, Zugang
+  zu lokalem Fachwissen
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+## Optionen für diese Sitzung
 
-## Exploring the Performance of GROMACS
+Es gibt eine Reihe von verschiedenen Möglichkeiten für die praktische Arbeit während
+dieser Sitzung. Die folgenden Aufgaben umfassen: die Untersuchung Ihrer eigenen Arbeit;
+ein erweitertes Beispiel unter Verwendung einer parallelen HPC-Anwendung; ein
+erweitertes Beispiel unter Verwendung von Hochdurchsatzberechnungen bei mehreren
+seriellen Analysen. Wenn Sie die Sitzung für etwas anderes nutzen möchten (z. B. um mit
+den Dozenten/Helfern wie oben beschrieben zu diskutieren), dann können Sie dies gerne
+tun. Die Idee der Sitzung ist es, Ihnen dabei zu helfen, Ihre Nutzung der
+fortgeschrittenen Datenverarbeitung zu verbessern, und dies wird von Person zu Person
+unterschiedlich sein!
 
-[GROMACS](https://www.gromacs.org) is a world-leading biomolecular modelling
-package that is heavily used on HPC systems around the world. Choosing the
-best resources for GROMACS calculations is non-trivial as it depends on may
-factors, including:
+::::::::::::::::::::::::::::::::::::::: challenge
 
-- The underlying hardware of the HPC system being used
-- The actual system being modelled by the GROMACS package
-- The balance of processes to threads used for the parallel calculation
+## Erforschung Ihrer Arbeit mit HPC
 
-In this exercise, you should try and decide on a good choice of resources and
-settings on {{ site.remote.name }} for a typical biomolecular system. This
-will involve:
-
-- Downloading the input file for GROMACS from
-  [{{ site.url }}{{site.baseurl }}/files/ion-channel.tpr](
-  {{ site.url }}{{site.baseurl }}/files/ion-channel.tpr)
-- Writing a job submission script to run GROMACS on {{ site.remote.name }}
-  using the system documentation
-- Varying the number of nodes (from 1 to 32 nodes is a good starting point)
-  used for the GROMACS job and benchmarking the performance (in ns/day)
-- Using the results from this study to propose a good resource choice for
-  this GROMACS calculation
-
-If you want to explore further than this initial task then there are a number
-of different interesting ways to do this. For example:
-
-- Vary the number of threads used per process
-- Reduce the number of cores used per node
-- Allow the calculation to use Symmetric Multithreading (SMT) if enabled
-
-Please ask for more information on these options from a helper!
+Wenn Sie ein praktisches Beispiel aus Ihrem Arbeitsbereich haben, bei dem Sie Hilfe
+benötigen, um es auf einem HPC-System zum Laufen zu bringen oder die Leistung eines
+HPC-Systems zu untersuchen, ist das großartig! Diskutieren Sie mit uns und stellen Sie
+Fragen (sowohl technische als auch nicht-technische).
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
+::::::::::::::::::::::::::::::::::::::: challenge
 
-## Running Many Serial BLAST+ Analyses in Parallel
+## Untersuchen der Leistung von GROMACS
+
+[GROMACS](https://www.gromacs.org) ist ein weltweit führendes Paket zur biomolekularen
+Modellierung, das auf HPC-Systemen auf der ganzen Welt stark genutzt wird. Die Wahl der
+besten Ressourcen für GROMACS-Berechnungen ist nicht trivial, da sie von vielen Faktoren
+abhängt, darunter:
+
+- Die zugrunde liegende Hardware des verwendeten HPC-Systems
+- Das tatsächliche System, das durch das GROMACS-Paket modelliert wird
+- Das Verhältnis von Prozessen zu Threads, die für die parallele Berechnung verwendet
+  werden
+
+In dieser Übung sollten Sie versuchen, eine gute Auswahl an Ressourcen und Einstellungen
+auf {{ site.remote.name }} für ein typisches biomolekulares System zu treffen. Dies
+beinhaltet:
+
+- Herunterladen der Eingabedatei für GROMACS von [{{ site.url }}{{site.baseurl
+  }}/files/ion-channel.tpr]( {{ site.url }}{{site.baseurl }}/files/ion-channel.tpr)
+- Schreiben eines Job-Submissions-Skripts zur Ausführung von GROMACS auf {{
+  site.remote.name }} unter Verwendung der Systemdokumentation
+- Variieren Sie die Anzahl der Knoten (von 1 bis 32 Knoten ist ein guter Ausgangspunkt),
+  die für den GROMACS-Job verwendet werden, und messen Sie die Leistung (in ns/Tag)
+- Verwenden Sie die Ergebnisse dieser Studie, um eine gute Ressourcenwahl für diese
+  GROMACS-Berechnung vorzuschlagen
+
+Wenn Sie über diese anfängliche Aufgabe hinausgehen möchten, gibt es eine Reihe
+interessanter Möglichkeiten, dies zu tun. Zum Beispiel:
+
+- Variieren Sie die Anzahl der pro Prozess verwendeten Threads
+- Reduzieren Sie die Anzahl der pro Knoten verwendeten Kerne
+- Erlauben Sie der Berechnung, symmetrisches Multithreading (SMT) zu verwenden, falls
+  aktiviert
+
+Bitte fragen Sie einen Helfer nach weiteren Informationen zu diesen Optionen!
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::: challenge
+
+## Parallele Ausführung vieler serieller BLAST+-Analysen
 
 [BLAST+](https://blast.ncbi.nlm.nih.gov/Blast.cgi?CMD=Web&PAGE_TYPE=BlastDocs&DOC_TYPE=Download)
-finds regions of similarity between biological sequences. The program
-compares nucleotide or protein sequences to sequence databases and calculates
-the statistical significance.
+findet Regionen der Ähnlichkeit zwischen biologischen Sequenzen. Das Programm vergleicht
+Nukleotid- oder Proteinsequenzen mit Sequenzdatenbanken und errechnet die statistische
+Signifikanz.
 
-In this exercise, you should use what you have learned so far to set up a way
-to run multiple serial BLAST+ analyses in parallel. There are many different
-ways to do this that can be used on their own or in combination. Some ideas
-include:
+In dieser Übung sollten Sie das bisher Gelernte anwenden, um einen Weg zu finden,
+mehrere serielle BLAST+ Analysen parallel laufen zu lassen. Es gibt viele verschiedene
+Möglichkeiten, dies zu tun, die einzeln oder in Kombination verwendet werden können.
+Einige Ideen sind:
 
-- Using {{ site.sched.name }} job arrays to run multiple copies across
-  different nodes
-- Using a bash loop within a node
-- Using GNU parallel within a node
+- Verwendung von {{ site.sched.name }} Job-Arrays zur Ausführung mehrerer Kopien auf
+  verschiedenen Knoten
+- Verwendung einer Bash-Schleife innerhalb eines Knotens
+- Verwendung von GNU Parallel innerhalb eines Knotens
 
-We have prepared an example dataset that has 100 sequences to analyse
-(actually this is 10 sequences repeated 10 times). This set is based on the
-[BLAST GNU Parallel example](https://github.com/LangilleLab/microbiome_helper/wiki/Quick-Introduction-to-GNU-Parallel)
+Wir haben einen Beispieldatensatz mit 100 zu analysierenden Sequenzen vorbereitet
+(eigentlich sind es 10 Sequenzen, die 10 Mal wiederholt werden). Dieser Satz basiert auf
+dem [BLAST GNU Parallel
+example](https://github.com/LangilleLab/microbiome_helper/wiki/Quick-Introduction-to-GNU-Parallel)
 
-This exercise involves:
+Diese Übung beinhaltet:
 
-- Downloading and expanding the dataset to the HPC system from:
-  [{{ site.url }}{{site.baseurl }}/files/parallel\_example.tar.gz]({{ site.url }}files/parallel_example.tar.gz)
+- Herunterladen und Erweitern des Datensatzes auf das HPC-System von: [{{ site.url
+  }}{{site.baseurl }}/files/parallel\_example.tar.gz]({{ site.url
+  }}files/parallel_example.tar.gz)
 
-- Writing a job submission script to run a single analysis using the `blast`
-  module and the following command:
-  
+- Schreiben eines Auftragsskripts zur Ausführung einer einzelnen Analyse unter
+  Verwendung des Moduls `blast` und des folgenden Befehls:
+
   ```bash
   blastp -db pdb_blast_db_example/pdb_seqres.txt -query test_seq_0.fas
   -evalue 0.0001 -word_size 7  -max_target_seqs 10 -num_threads 1 \
   -out output_seq_0.blast -outfmt "6 std stitle staxids sscinames"
   ```
-  
-  where the `\` character tells `bash` that the command continues on the next
-  line. Note that there will be no output from this alignment if it works
-  correctly).
 
-- Choosing a method to run multiple copies of the analysis to complete all
-  100 analysis tasks in a parallel way (not all 100 have to be run
-  simultaneously).
+  wobei das Zeichen `\` dem Zeichen `bash` mitteilt, dass der Befehl in der nächsten
+  Zeile fortgesetzt wird. Beachten Sie, dass es bei dieser Ausrichtung keine Ausgabe
+  geben wird, wenn sie korrekt funktioniert).
 
-You can explore further by investigating different ways to parallelize this
-problem and/or combining multiple parallel strategies.
+- Auswahl einer Methode zur Ausführung mehrerer Kopien der Analyse, um alle 100
+  Analyseaufgaben parallel auszuführen (es müssen nicht alle 100 gleichzeitig ausgeführt
+  werden).
 
-You could also investigate the variation in performance as you run multiple
-copies on a node. At what point does the hardware become overloaded?
+Sie können dieses Problem weiter erforschen, indem Sie verschiedene Möglichkeiten zur
+Parallelisierung dieses Problems und/oder die Kombination mehrerer paralleler Strategien
+untersuchen.
+
+Sie könnten auch die Leistungsschwankungen untersuchen, wenn Sie mehrere Kopien auf
+einem Knoten ausführen. An welchem Punkt wird die Hardware überlastet?
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
 
 

@@ -1,161 +1,165 @@
 ---
-title: Setup
+title: Einrichtung
 ---
 
-There are several pieces of software you will wish to install before the
-workshop. Though installation help will be provided at the workshop, we
-recommend that these tools are installed (or at least downloaded) beforehand.
 
-1. [A terminal application or command-line interface](#where-to-type-commands-how-to-open-a-new-shell)
-2. [A Secure Shell application](#ssh-for-secure-connections)
+Es gibt einige Software, die Sie vor dem Workshop installieren müssen. Obwohl Sie
+während des Workshops Hilfe bei der Installation erhalten, empfehlen wir Ihnen, diese
+Programme bereits vorher zu installieren (oder zumindest herunterzuladen).
 
-::::::::::::::::::::::::::::::::::::::::::  prereq
+1. [Eine Terminalanwendung oder
+   Befehlszeilenschnittstelle](#where-to-type-commands-how-to-open-a-new-shell)
+2. [Eine Secure Shell-Anwendung](#ssh-for-secure-connections)
 
-## Bash and SSH
+:::::::::::::::::::::::::::::::::::::::::: prereq
 
-This lesson requires a terminal application (`bash`, `zsh`, or others) with
-the ability to securely connect to a remote machine (`ssh`).
+## Bash und SSH
 
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-## Where to Type Commands: How to Open a New Shell
-
-The shell is a program that enables us to send commands to the computer and
-receive output. It is also referred to as the terminal or command line.
-
-Some computers include a default Unix Shell program. The steps below describe
-some methods for identifying and opening a Unix Shell program if you already
-have one installed. There are also options for identifying and downloading a
-Unix Shell program, a Linux/UNIX emulator, or a program to access a Unix Shell
-on a server.
-
-### Unix Shells on Windows
-
-Computers with Windows operating systems do not automatically have a Unix Shell
-program installed. In this lesson, we encourage you to use an emulator included
-in Git for Windows, which gives you access to both Bash shell commands and Git.
-If you have attended a Software Carpentry workshop session, it is likely you
-have already received instructions on how to install Git for Windows.
-
-Once installed, you can open a terminal by running the program Git Bash from
-the Windows start menu.
-
-#### Shell Programs for Windows
-
-- [Git for Windows][git4win] -- *Recommended*
-- [Windows Subsystem for Linux][wsl] -- advanced option for Windows 10
-
-::::::::::::::::::::::::::::::::::::::  discussion
-
-## Alternatives to Git for Windows
-
-Other solutions are available for running Bash commands on Windows. There is
-now a Bash shell command-line tool available for Windows 10. Additionally,
-you can run Bash commands on a remote computer or server that already has a
-Unix Shell, from your Windows machine. This can usually be done through a
-Secure Shell (SSH) client. One such client available for free for Windows
-computers is [PuTTY][putty]. See the reference below for information on
-installing and using PuTTY, using the Windows 10 command-line tool, or
-installing and using a Unix/Linux emulator.
-
-For advanced users, you may choose one of the following alternatives:
-
-- Install the [Windows Subsystem for Linux][wsl]
-- Use the Windows [PowerShell][ms-shell]
-- Read up on [Using a Unix/Linux emulator][unix-emulator] (Cygwin) or Secure
-  Shell (SSH) client (PuTTY)
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Warning
-
-Commands in the Windows Subsystem for Linux (WSL), PowerShell, or Cygwin
-may differ slightly from those shown in the lesson or presented in the
-workshop. Please ask if you encounter such a mismatch -- you're
-probably not alone.
-
+Diese Lektion erfordert eine Terminalanwendung (`bash`, `zsh`, oder andere) mit der
+Fähigkeit, eine sichere Verbindung zu einem entfernten Rechner (`ssh`) herzustellen.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+## Wo man Befehle eingibt: Wie man eine neue Shell öffnet
 
-### Unix Shell on macOS
+Die Shell ist ein Programm, das es uns ermöglicht, Befehle an den Computer zu senden und
+Ausgaben zu erhalten. Sie wird auch als Terminal oder Kommandozeile bezeichnet.
 
-On macOS, the default Unix Shell is accessible by running the Terminal program
-from the `/Application/Utilities` folder in Finder.
+Einige Computer enthalten ein Standard-Unix-Shell-Programm. Die folgenden Schritte
+beschreiben einige Methoden zur Identifizierung und zum Öffnen eines
+Unix-Shell-Programms, wenn Sie bereits eines installiert haben. Es gibt auch
+Möglichkeiten, ein Unix-Shell-Programm, einen Linux/UNIX-Emulator oder ein Programm für
+den Zugriff auf eine Unix-Shell auf einem Server zu identifizieren und herunterzuladen.
 
-To open Terminal, try one or both of the following:
+### Unix-Shells unter Windows
 
-- In Finder, select the Go menu, then select Utilities. Locate Terminal in the
-  Utilities folder and open it.
-- Use the Mac 'Spotlight' computer search function. Search for: `Terminal` and
-  press <kbd>Return</kbd>.
+Auf Computern mit Windows-Betriebssystemen ist nicht automatisch ein Unix-Shell-Programm
+installiert. In dieser Lektion empfehlen wir Ihnen die Verwendung eines Emulators, der
+in Git für Windows enthalten ist und Ihnen Zugang sowohl zu Bash-Shell-Befehlen als auch
+zu Git bietet. Wenn Sie an einem Software Carpentry-Workshop teilgenommen haben, haben
+Sie wahrscheinlich bereits Anweisungen zur Installation von Git für Windows erhalten.
 
-For an introduction, see [How to Use Terminal on a Mac][mac-terminal].
+Nach der Installation können Sie ein Terminal öffnen, indem Sie das Programm Git Bash
+aus dem Windows-Startmenü starten.
 
-### Unix Shell on Linux
+#### Shell-Programme für Windows
 
-On most versions of Linux, the default Unix Shell is accessible by running the
-[(Gnome) Terminal](https://help.gnome.org/users/gnome-terminal/stable/) or
-[(KDE) Konsole](https://konsole.kde.org/) or
-[xterm](https://en.wikipedia.org/wiki/Xterm), which can be found via the
-applications menu or the search bar.
+- [Git für Windows][git4win] -- *Empfohlen*
+- [Windows Subsystem für Linux][wsl] -- erweiterte Option für Windows 10
 
-### Special Cases
+:::::::::::::::::::::::::::::::::::::: discussion
 
-If none of the options above address your circumstances, try an online search
-for: `Unix shell [your operating system]`.
+## Alternativen zu Git für Windows
 
-## SSH for Secure Connections
+Für die Ausführung von Bash-Befehlen unter Windows gibt es andere Lösungen. Es gibt
+jetzt ein Bash-Shell-Befehlszeilentool für Windows 10. Außerdem können Sie Bash-Befehle
+auf einem Remote-Computer oder -Server, der bereits über eine Unix-Shell verfügt, von
+Ihrem Windows-Rechner aus ausführen. Dies kann normalerweise über einen Secure Shell
+(SSH)-Client erfolgen. Ein solcher Client, der für Windows-Computer kostenlos erhältlich
+ist, ist [PuTTY][putty]. Informationen zur Installation und Verwendung von PuTTY, zur
+Verwendung des Windows 10-Befehlszeilentools oder zur Installation und Verwendung eines
+Unix/Linux-Emulators finden Sie in der folgenden Referenz.
 
-All students should have an SSH client installed. SSH is a tool that allows us
-to connect to and use a remote computer as our own.
+Für fortgeschrittene Benutzer können Sie eine der folgenden Alternativen wählen:
 
-### SSH for Windows
+- Installieren Sie das [Windows Subsystem für Linux][wsl]
+- Verwenden Sie die Windows [PowerShell][ms-shell]
+- Informieren Sie sich über [Verwendung eines Unix/Linux-Emulators][unix-emulator]
+  (Cygwin) oder Secure Shell (SSH) Client (PuTTY)
 
-Git for Windows comes with SSH preinstalled: you do not have to do anything.
+::::::::::::::::::::::::::::::::::::::: challenge
 
-::::::::::::::::::::::::::::::::::::::  discussion
+## Warnung
 
-## GUI Support for Windows
+Die Befehle im Windows Subsystem für Linux (WSL), in der PowerShell oder in Cygwin
+können sich geringfügig von denen unterscheiden, die in der Lektion gezeigt oder im
+Workshop vorgestellt werden. Bitte fragen Sie nach, wenn Sie eine solche Abweichung
+feststellen - Sie sind wahrscheinlich nicht allein.
 
-If you know that the software you will be running on the cluster requires a
-graphical user interface (a GUI window needs to open for the application to
-run properly), please install [MobaXterm](https://mobaxterm.mobatek.net) Home
-Edition.
-
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-### SSH for macOS
-
-macOS comes with SSH pre-installed: you do not have to do anything.
-
-::::::::::::::::::::::::::::::::::::::  discussion
-
-## GUI Support for macOS
-
-If you know that the software you will be running requires a graphical user
-interface, please install [XQuartz](https://www.xquartz.org).
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-### SSH for Linux
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Linux comes with SSH and X window support preinstalled: you do not have to do
-anything.
+### Unix-Shell auf macOS
+
+Unter macOS ist die Standard-Unix-Shell durch Ausführen des Terminal-Programms aus dem
+Ordner `/Application/Utilities` im Finder zugänglich.
+
+Um Terminal zu öffnen, versuchen Sie eine oder beide der folgenden Möglichkeiten:
+
+- Wählen Sie im Finder das Menü "Go" und dann "Utilities". Suchen Sie Terminal im Ordner
+  "Utilities" und öffnen Sie es.
+- Verwenden Sie die Mac 'Spotlight' Computer-Suchfunktion. Suchen Sie nach: `Terminal`
+  und drücken Sie <kbd>Return</kbd>.
+
+Für eine Einführung, siehe [How to Use Terminal on a Mac][mac-terminal].
+
+### Unix-Shell unter Linux
+
+Bei den meisten Linux-Versionen ist die Standard-Unix-Shell über das [(Gnome)
+Terminal](https://help.gnome.org/users/gnome-terminal/stable/) oder [(KDE)
+Konsole](https://konsole.kde.org/) oder [xterm](https://en.wikipedia.org/wiki/Xterm)
+zugänglich, die über das Anwendungsmenü oder die Suchleiste gefunden werden können.
+
+### Sonderfälle
+
+Wenn keine der oben genannten Optionen auf Ihre Situation zutrifft, versuchen Sie eine
+Online-Suche nach: `Unix shell [your operating system]`.
+
+## SSH für sichere Verbindungen
+
+Alle Schüler sollten einen SSH-Client installiert haben. SSH ist ein Werkzeug, mit dem
+wir uns mit einem entfernten Computer verbinden und ihn wie unseren eigenen benutzen
+können.
+
+### SSH für Windows
+
+Git für Windows wird mit vorinstalliertem SSH geliefert: Sie müssen nichts weiter tun.
+
+:::::::::::::::::::::::::::::::::::::: discussion
+
+## GUI-Unterstützung für Windows
+
+Wenn Sie wissen, dass die Software, die Sie auf dem Cluster ausführen werden, eine
+grafische Benutzeroberfläche benötigt (ein GUI-Fenster muss geöffnet sein, damit die
+Anwendung richtig läuft), installieren Sie bitte
+[MobaXterm](https://mobaxterm.mobatek.net) Home Edition.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+### SSH für macOS
+
+macOS kommt mit vorinstalliertem SSH: Sie müssen nichts tun.
+
+:::::::::::::::::::::::::::::::::::::: discussion
+
+## GUI-Unterstützung für macOS
+
+Wenn Sie wissen, dass die Software, die Sie ausführen werden, eine grafische
+Benutzeroberfläche benötigt, installieren Sie bitte [XQuartz](https://www.xquartz.org).
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+### SSH für Linux
+
+Linux kommt mit vorinstallierter SSH- und X-Window-Unterstützung: Sie müssen nichts tun.
 
 <!-- links -->
 
 [git4win]: https://gitforwindows.org/
 [wsl]: https://docs.microsoft.com/en-us/windows/wsl/install-win10
 [putty]: https://www.chiark.greenend.org.uk/~sgtatham/putty/
-[ms-shell]: https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7
+[ms-shell]:
+https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7
 [unix-emulator]: https://www.cygwin.com/
-[mac-terminal]: https://www.macworld.co.uk/feature/mac-software/how-use-terminal-on-mac-3608274/
+[mac-terminal]:
+https://www.macworld.co.uk/feature/mac-software/how-use-terminal-on-mac-3608274/
+
 
 
 
