@@ -527,7 +527,7 @@ erhalten.</p>
   Einige Ideen
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <ul>
 <li>Abrufen von E-Mails: Ihr Computer (möglicherweise in Ihrer
@@ -1235,7 +1235,7 @@ Knoten verfügbar.</li>
 “HPC” werden in verschiedenen Zusammenhängen und mit unterschiedlichen
 Bedeutungen verwendet. Was bedeuten sie also? Und was noch wichtiger
 ist: Wie verwenden wir sie bei unserer Arbeit?</p>
-<p>Die <em>Wolke</em> ist ein allgemeiner Begriff, der sich auf
+<p>Die <em>Cloud</em> ist ein allgemeiner Begriff, der sich auf
 Computerressourcen bezieht, die a) den Benutzern auf Anfrage oder nach
 Bedarf <em>zur Verfügung gestellt</em> werden und b) reale oder
 <em>virtuelle</em> Ressourcen darstellen, die sich überall auf der Erde
@@ -1267,7 +1267,7 @@ HPC-Ressourcen verwendet, die weniger beeindruckend sind als die
 Rechenzentren unterhalten, die mehrere solcher Systeme unterstützen, die
 alle ein gemeinsames Netzwerk und einen gemeinsamen Speicher nutzen, um
 gemeinsame rechenintensive Aufgaben zu unterstützen.</p>
-</section><section><h2 class="section-heading" id="angemeldet">Angemeldet<a class="anchor" aria-label="anchor" href="#angemeldet"></a>
+</section><section><h2 class="section-heading" id="anmelden">Anmelden<a class="anchor" aria-label="anchor" href="#anmelden"></a>
 </h2>
 <hr class="half-width">
 <p>Der erste Schritt bei der Nutzung eines Clusters besteht darin, eine
@@ -1345,23 +1345,23 @@ Eingabeaufforderung ist)</p>
 </h3>
 <pre class="output" tabindex="0"><code><span><span class="va">login1</span></span></code></pre>
 </div>
-<div id="was-befindet-sich-in-ihrem-heimatverzeichnis" class="callout challenge">
+<div id="was-befindet-sich-in-ihrem-home-verzeichnis" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Aufgabe</span>
-<div id="was-befindet-sich-in-ihrem-heimatverzeichnis" class="callout-inner">
+<div id="was-befindet-sich-in-ihrem-home-verzeichnis" class="callout-inner">
 <h3 class="callout-title">Was befindet sich in Ihrem
-Heimatverzeichnis?</h3>
+Home-Verzeichnis?</h3>
 <div class="callout-content">
 <p>Die Systemadministratoren haben Ihr Home-Verzeichnis möglicherweise
 mit einigen hilfreichen Dateien, Ordnern und Verknüpfungen (Shortcuts)
 zu für Sie reserviertem Speicherplatz auf anderen Dateisystemen
 konfiguriert. Schauen Sie sich um und sehen Sie, was Sie finden können.
 <em>Tipp:</em> Die Shell-Befehle <code>pwd</code> und <code>ls</code>
-können dabei hilfreich sein. Der Inhalt des Heimatverzeichnisses
-variiert von Benutzer zu Benutzer. Bitte besprechen Sie alle
-Unterschiede, die Sie feststellen, mit Ihren Nachbarn.</p>
+können dabei hilfreich sein. Der Inhalt des Home-Verzeichnisses variiert
+von Benutzer zu Benutzer. Bitte besprechen Sie alle Unterschiede, die
+Sie feststellen, mit Ihren Nachbarn.</p>
 </div>
 </div>
 </div>
@@ -1378,19 +1378,18 @@ auf höheren Ebenen?</p>
 <p>Wenn Sie beide leere Verzeichnisse haben, werden sie identisch
 aussehen. Wenn Sie oder Ihr Nachbar das System vorher benutzt haben,
 kann es Unterschiede geben. Woran arbeiten Sie?</p>
-<p>Verwenden Sie <code>pwd</code>, um <strong>p</strong>den
-<strong>w</strong>arbeitenden <strong>d</strong>Verzeichnispfad zu
-drucken:</p>
+<p>Verwenden Sie <code>pwd</code> (print working directory), um den
+aktuellen Verzeichnispfad zu drucken:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~] pwd</span></code></pre>
 </div>
-<p>Sie können <code>ls</code> ausführen, um den Inhalt des
-Verzeichnisses zu <strong>l</strong>i<strong>s</strong>t, obwohl es
-möglich ist, dass nichts angezeigt wird (wenn keine Dateien
-bereitgestellt wurden). Um sicher zu gehen, benutzen Sie das
-<code>-a</code> Flag, um auch versteckte Dateien anzuzeigen.</p>
+<p>Sie können <code>ls</code> (list) ausführen, um den Inhalt des
+Verzeichnisses aufzulisten, obwohl es möglich ist, dass nichts angezeigt
+wird (wenn keine Dateien bereitgestellt wurden). Um sicher zu gehen,
+benutzen Sie das <code>-a</code> Flag, um auch versteckte Dateien
+anzuzeigen.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -1492,13 +1491,13 @@ sein kann (eine Festplatte ist darin installiert), ist es üblicher, dass
 Knoten mit einem gemeinsam genutzten, entfernten Dateiserver oder einem
 Cluster von Servern verbunden sind.</p>
 <figure><img src="fig/node_anatomy.png" max-width="20%" caption="" alt="Knoten Anatomie" class="figure mx-auto d-block"><div class="figcaption">Knoten Anatomie</div>
-</figure><div id="erforsche-deinen-computer" class="callout challenge">
+</figure><div id="untersuche-deinen-computer" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <span class="callout-header">Aufgabe</span>
-<div id="erforsche-deinen-computer" class="callout-inner">
-<h3 class="callout-title">Erforsche deinen Computer</h3>
+<div id="untersuche-deinen-computer" class="callout-inner">
+<h3 class="callout-title">Untersuche deinen Computer</h3>
 <div class="callout-content">
 <p>Versuchen Sie herauszufinden, wie viele CPUs und wie viel
 Arbeitsspeicher auf Ihrem persönlichen Computer verfügbar sind. Beachten
@@ -1586,11 +1585,10 @@ Speicher, indem Sie die Datei <code>/proc/meminfo</code> lesen:</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="ex">[yourUsername@login1</span> ~] less /proc/meminfo</span></code></pre>
 </div>
 <p>Sie können auch die verfügbaren Dateisysteme mit <code>df</code>
-untersuchen, um <strong>d</strong>isk <strong>f</strong>ree space
-anzuzeigen. Das Flag <code>-h</code> zeigt die Größen in einem
-menschenfreundlichen Format an, d.h. GB statt B. Das
-<strong>t</strong>ype Flag <code>-T</code> zeigt, welche Art von
-Dateisystem jede Ressource ist.</p>
+(disk freespace )untersuchen, um Festplattenspeicher anzuzeigen. Das
+Flag <code>-h</code> zeigt die Größen in einem menschenfreundlichen
+Format an, d.h. GB statt B. Das type Flag <code>-T</code> zeigt, welche
+Art von Dateisystem jede Ressource ist.</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2515,7 +2513,7 @@ des Programmverhaltens</h3>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Die Variable <code>TIME_STYLE</code> wird von <code>ls</code> nicht
 <em>gesehen</em>, bis sie exportiert wird. Zu diesem Zeitpunkt wird sie
@@ -2556,7 +2554,7 @@ er das Verzeichnis ausgibt, von dem aus der Job übermittelt wurde.</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4018,7 +4016,7 @@ Reihenfolge: das Neueste zuerst. Wie lautete die Ausgabe?</p>
   Lesen der Job-Ausgabe
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Die Cluster-Ausgabe sollte in eine Datei in dem Ordner geschrieben
 werden, aus dem Sie den Job gestartet haben. Zum Beispiel,</p>
@@ -4206,7 +4204,7 @@ Auftrag: Bedeutet das, dass er in ¼ der Zeit fertig wurde?</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Der parallele Auftrag hat <em>weniger</em> Zeit benötigt: 11 Sekunden
 sind besser als 30! Aber es ist nur eine 2,7-fache Verbesserung, nicht
@@ -4786,7 +4784,7 @@ Anmeldeknoten ausgeführt werden sollte?</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Das Erstellen von Software, das Anlegen von Verzeichnissen und das
 Entpacken von Software sind übliche und akzeptable &gt; Aufgaben für den
@@ -5028,7 +5026,7 @@ nach HPC Carpentry’s Cloud Cluster zu übertragen?</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>
