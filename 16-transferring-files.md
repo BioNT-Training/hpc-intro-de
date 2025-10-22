@@ -1,5 +1,5 @@
 ---
-title: Übertragen von Dateien mit entfernten Computern
+title: Übertragen von Dateien mit remote Computern
 teaching: 15
 exercises: 15
 ---
@@ -19,7 +19,7 @@ exercises: 15
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Die Arbeit auf einem entfernten Computer ist nicht sehr nützlich, wenn wir keine Dateien zum oder vom Cluster bekommen können. Es gibt mehrere Optionen für die Übertragung von Daten zwischen Computerressourcen mit Hilfe von CLI- und GUI-Dienstprogrammen, von denen wir einige vorstellen werden.
+Die Arbeit auf einem remote Computer ist nicht sehr nützlich, wenn wir keine Dateien zum oder vom Cluster bekommen können. Es gibt mehrere Optionen für die Übertragung von Daten zwischen Computerressourcen mit Hilfe von CLI- und GUI-Dienstprogrammen, von denen wir einige vorstellen werden.
 
 ## Herunterladen von Lektionsdateien aus dem Internet
 
@@ -68,7 +68,7 @@ Nachdem Sie die Datei heruntergeladen haben, benutzen Sie `ls`, um sie in Ihrem 
 
 ## Dateien archivieren
 
-Eine der größten Herausforderungen bei der Übertragung von Daten zwischen entfernten HPC-Systemen ist die große Anzahl von Dateien. Die Übertragung jeder einzelnen Datei ist mit einem Overhead verbunden, und wenn wir eine große Anzahl von Dateien übertragen, verlangsamen diese Overheads unsere Übertragungen in hohem Maße.
+Eine der größten Herausforderungen bei der Übertragung von Daten zwischen remote HPC-Systemen ist die große Anzahl von Dateien. Die Übertragung jeder einzelnen Datei ist mit einem Overhead verbunden, und wenn wir eine große Anzahl von Dateien übertragen, verlangsamen diese Overheads unsere Übertragungen in hohem Maße.
 
 Die Lösung für dieses Problem ist die *Archivierung* mehrerer Dateien in eine kleinere Anzahl größerer Dateien, bevor wir die Daten übertragen, um unsere Übertragungseffizienz zu verbessern. Manchmal wird die Archivierung mit einer *Komprimierung* kombiniert, um die zu übertragende Datenmenge zu verringern und so die Übertragung zu beschleunigen. Der gebräuchlichste Archivierungsbefehl, den Sie auf einem (Linux-)HPC-Cluster verwenden werden, ist `tar`.
 
@@ -76,7 +76,7 @@ Die Lösung für dieses Problem ist die *Archivierung* mehrerer Dateien in eine 
 
 Der Teil `.gz` steht für *gzip*, eine Kompressionsbibliothek. Es ist üblich (aber nicht notwendig!), dass diese Art von Datei durch das Lesen ihres Namens interpretiert werden kann: Es scheint, dass jemand Dateien und Ordner, die sich auf etwas namens "amdahl" beziehen, in eine einzige Datei mit `tar` verpackt hat und dann dieses Archiv mit `gzip` komprimiert hat, um Platz zu sparen.
 
-Schauen wir mal, ob das der Fall ist, *ohne* die Datei zu entpacken. `tar` gibt das "**t**able of contents" mit dem `-t` Flag aus, für die mit dem `-f` Flag angegebene Datei, gefolgt vom Dateinamen. Beachten Sie, dass Sie die beiden Flags verketten können: das Schreiben von `-t -f` ist austauschbar mit dem Schreiben von `-tf` zusammen. Allerdings muss das Argument nach `-f` ein Dateiname sein, also funktioniert `-ft` *nicht*.
+Schauen wir mal, ob das der Fall ist, *ohne* die Datei zu entpacken. `tar` gibt das Inhaltsverzeichnis ("**t**able of contents") mit dem `-t` Flag aus, für die mit dem `-f` Flag angegebene Datei, gefolgt vom Dateinamen. Beachten Sie, dass Sie die beiden Flags verketten können: das Schreiben von `-t -f` ist austauschbar mit dem Schreiben von `-tf` zusammen. Allerdings muss das Argument nach `-f` ein Dateiname sein, also funktioniert `-ft` *nicht*.
 
 ```bash
 [you@laptop:~]$ tar -tf amdahl.tar.gz
@@ -141,7 +141,7 @@ Der Ordner hat einen unglücklichen Namen, also ändern wir ihn in etwas Passend
 [you@laptop:~]$ mv hpc-carpentry-amdahl-46c9b4b amdahl
 ```
 
-Überprüfen Sie die Größe des extrahierten Verzeichnisses und vergleichen Sie sie mit der Größe der komprimierten Datei, indem Sie `du` für "**d**isk **u**sage" verwenden.
+Überprüfen Sie die Größe des extrahierten Verzeichnisses und vergleichen Sie sie mit der Größe der komprimierten Datei, indem Sie `du` für "**d**isk **u**sage" (also Festplattennutzung) verwenden.
 
 ```bash
 [you@laptop:~]$ du -sh amdahl.tar.gz
@@ -203,7 +203,7 @@ Um eine Datei auf einen anderen Computer *hochzuladen*, lautet der Vorlagenbefeh
 [you@laptop:~]$ scp local_file yourUsername@cluster.hpc-carpentry.org:remote_destination
 ```
 
-an, wobei `@` und `:` Feldtrennzeichen sind und `remote_destination` ein Pfad relativ zu Ihrem entfernten Heimatverzeichnis oder ein neuer Dateiname ist, wenn Sie ihn ändern möchten, oder sowohl ein relativer Pfad *als auch* ein neuer Dateiname. Wenn Sie keinen bestimmten Ordner im Sinn haben, können Sie das `remote_destination` weglassen und die Datei wird in Ihr Heimatverzeichnis auf dem entfernten Computer kopiert (mit ihrem ursprünglichen Namen). Wenn Sie ein `remote_destination` einschließen, beachten Sie, dass `scp` dies genauso interpretiert wie `cp` beim Erstellen von lokalen Kopien: wenn es existiert und ein Ordner ist, wird die Datei in den Ordner kopiert; wenn es existiert und eine Datei ist, wird die Datei mit dem Inhalt von `local_file` überschrieben; wenn es nicht existiert, wird angenommen, dass es ein Zieldateiname für `local_file` ist.
+an, wobei `@` und `:` Feldtrennzeichen sind und `remote_destination` ein Pfad relativ zu Ihrem remote Heimatverzeichnis oder ein neuer Dateiname ist, wenn Sie ihn ändern möchten, oder sowohl ein relativer Pfad *als auch* ein neuer Dateiname. Wenn Sie keinen bestimmten Ordner im Sinn haben, können Sie das `remote_destination` weglassen und die Datei wird in Ihr Heimatverzeichnis auf dem remote Computer kopiert (mit ihrem ursprünglichen Namen). Wenn Sie ein `remote_destination` einschließen, beachten Sie, dass `scp` dies genauso interpretiert wie `cp` beim Erstellen von lokalen Kopien: wenn es existiert und ein Ordner ist, wird die Datei in den Ordner kopiert; wenn es existiert und eine Datei ist, wird die Datei mit dem Inhalt von `local_file` überschrieben; wenn es nicht existiert, wird angenommen, dass es ein Zieldateiname für `local_file` ist.
 
 So laden Sie das Unterrichtsmaterial in Ihr entferntes Heimatverzeichnis hoch:
 
@@ -254,7 +254,7 @@ Bei einem großen Verzeichnis -- entweder in der Größe oder in der Anzahl der 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Bei der Verwendung von `scp` ist Ihnen vielleicht aufgefallen, dass ein `:` *immer* dem Namen des entfernten Computers folgt. Eine Zeichenkette *nach* dem `:` gibt das entfernte Verzeichnis an, in das Sie die Datei oder den Ordner übertragen wollen, einschließlich eines neuen Namens, wenn Sie das entfernte Material umbenennen wollen. Wenn Sie dieses Feld leer lassen, ist `scp` standardmäßig Ihr Heimatverzeichnis und der Name des zu übertragenden lokalen Materials.
+Bei der Verwendung von `scp` ist Ihnen vielleicht aufgefallen, dass ein `:` *immer* dem Namen des remote Computers folgt. Eine Zeichenkette *nach* dem `:` gibt das entfernte Verzeichnis an, in das Sie die Datei oder den Ordner übertragen wollen, einschließlich eines neuen Namens, wenn Sie das entfernte Material umbenennen wollen. Wenn Sie dieses Feld leer lassen, ist `scp` standardmäßig Ihr Heimatverzeichnis und der Name des zu übertragenden lokalen Materials.
 
 Auf Linux-Computern ist `/` das Trennzeichen in Datei- oder Verzeichnispfaden. Ein Pfad, der mit `/` beginnt, wird *absolut* genannt, da es nichts oberhalb der Wurzel `/` geben kann. Ein Pfad, der nicht mit `/` beginnt, wird *relativ* genannt, da er nicht an der Wurzel verankert ist.
 
@@ -276,7 +276,7 @@ Die Syntax ist ähnlich wie bei `scp`. Zum Übertragen *auf* einen anderen Compu
 
 Die Optionen sind:
 
-- `-a` (**ein**Archiv), um u.a. Datei-Zeitstempel, Berechtigungen und Ordner zu erhalten; impliziert Rekursion
+- `-a` (ein Archiv), um u.a. Datei-Zeitstempel, Berechtigungen und Ordner zu erhalten; impliziert Rekursion
 - `-v` (**v**erbose), um eine ausführliche Ausgabe zu erhalten, die Ihnen hilft, die Übertragung zu überwachen
 - `-P` (partial/progress), um teilweise übertragene Dateien im Falle einer Unterbrechung aufzubewahren und auch den Fortschritt der Übertragung anzuzeigen.
 
@@ -286,7 +286,7 @@ Um ein Verzeichnis rekursiv zu kopieren, können wir die gleichen Optionen verwe
 [you@laptop:~]$ rsync -avP amdahl yourUsername@cluster.hpc-carpentry.org:~/
 ```
 
-Wie geschrieben, wird das lokale Verzeichnis und sein Inhalt unter Ihrem Heimatverzeichnis auf dem entfernten System abgelegt. Wenn ein abschließender Schrägstrich an die Quelle angehängt wird, wird kein neues Verzeichnis erstellt, das dem übertragenen Verzeichnis entspricht, und der Inhalt des Quellverzeichnisses wird direkt in das Zielverzeichnis kopiert.
+Wie geschrieben, wird das lokale Verzeichnis und sein Inhalt unter Ihrem Heimatverzeichnis auf dem remote System abgelegt. Wenn ein abschließender Schrägstrich an die Quelle angehängt wird, wird kein neues Verzeichnis erstellt, das dem übertragenen Verzeichnis entspricht, und der Inhalt des Quellverzeichnisses wird direkt in das Zielverzeichnis kopiert.
 
 Um eine Datei herunterzuladen, ändern wir einfach die Quelle und das Ziel:
 
@@ -332,7 +332,7 @@ See http://rsync.samba.org/ for updates, bug reports, and answers
 
 ## Interaktives Übertragen von Dateien mit FileZilla
 
-FileZilla ist ein plattformübergreifender Client für das Herunterladen und Hochladen von Dateien auf und von einem entfernten Computer. Er ist absolut narrensicher und funktioniert immer gut. Er verwendet das `sftp`-Protokoll. Sie können mehr über die Verwendung des `sftp`-Protokolls in der Kommandozeile in der [Lektionsdiskussion](../learners/discuss.md) lesen.
+FileZilla ist ein plattformübergreifender Client für das Herunterladen und Hochladen von Dateien auf und von einem remote Computer. Er ist absolut narrensicher und funktioniert immer gut. Er verwendet das `sftp`-Protokoll. Sie können mehr über die Verwendung des `sftp`-Protokolls in der Kommandozeile in der [Lektionsdiskussion](../learners/discuss.md) lesen.
 
 Laden Sie den FileZilla-Client von <https://filezilla-project.org> herunter und installieren Sie ihn. Nach der Installation und dem Öffnen des Programms sollten Sie auf der linken Seite des Bildschirms ein Fenster mit einem Dateibrowser Ihres lokalen Systems sehen. Wenn Sie sich mit dem Cluster verbinden, werden Ihre Clusterdateien auf der rechten Seite angezeigt.
 
@@ -343,9 +343,9 @@ Um sich mit dem Cluster zu verbinden, müssen wir nur unsere Anmeldedaten oben a
 - Passwort: Ihr Clusterkennwort
 - Port: (leer lassen, um den Standardport zu verwenden)
 
-Drücken Sie "Quickconnect", um eine Verbindung herzustellen. Ihre entfernten Dateien sollten auf der rechten Seite des Bildschirms angezeigt werden. Sie können Dateien per Drag-and-Drop zwischen der linken (lokalen) und der rechten (entfernten) Seite des Bildschirms verschieben, um Dateien zu übertragen.
+Drücken Sie "Quickconnect", um eine Verbindung herzustellen. Ihre remote Dateien sollten auf der rechten Seite des Bildschirms angezeigt werden. Sie können Dateien per Drag-and-Drop zwischen der linken (lokalen) und der rechten (remote) Seite des Bildschirms verschieben, um Dateien zu übertragen.
 
-Wenn Sie große Dateien (in der Regel größer als ein Gigabyte) von einem entfernten Computer auf einen anderen übertragen müssen, melden Sie sich per SSH auf dem Computer an, auf dem sich die Dateien befinden, und verwenden Sie `scp` oder `rsync`, um die Dateien auf den anderen Computer zu übertragen. Dies ist effizienter als die Verwendung von FileZilla (oder ähnlichen Anwendungen), die von der Quelle auf Ihren lokalen Rechner und dann auf den Zielrechner kopieren würden.
+Wenn Sie große Dateien (in der Regel größer als ein Gigabyte) von einem remote Computer auf einen anderen übertragen müssen, melden Sie sich per SSH auf dem Computer an, auf dem sich die Dateien befinden, und verwenden Sie `scp` oder `rsync`, um die Dateien auf den anderen Computer zu übertragen. Dies ist effizienter als die Verwendung von FileZilla (oder ähnlichen Anwendungen), die von der Quelle auf Ihren lokalen Rechner und dann auf den Zielrechner kopieren würden.
 
 [git-swc]: https://swcarpentry.github.io/git-novice/
 [rsync]: https://rsync.samba.org/
