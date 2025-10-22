@@ -13,7 +13,7 @@ source("load_config.R")
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Verstehen, wie Variablen in der Shell implementiert werden
-- Liest den Wert einer bestehenden Variable
+- Den Wert einer bestehenden Variable auslesen
 - Erstellen Sie neue Variablen und ändern Sie deren Werte
 - Ändern Sie das Verhalten eines Programms mit Hilfe einer Umgebungsvariablen
 - Erkläre, wie die Shell die Variable `PATH` benutzt, um nach ausführbaren Dateien zu suchen
@@ -29,7 +29,7 @@ source("load_config.R")
 
 ::::::::::::::::::::::::::::::::::::::::: callout
 
-## Episode provenance
+## Herkunft der Episode
 
 Diese Folge wurde aus der [Shell-Extras-Folge über Shell-Variablen] (https://github.com/carpentries-incubator/shell-extras/blob/gh-pages/_episodes/08-environment-variables.md) und der [HPC-Shell-Folge über Skripte] (https://github.com/hpc-carpentry/hpc-shell/blob/gh-pages/_episodes/05-scripts.md) neu zusammengestellt.
 
