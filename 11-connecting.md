@@ -86,7 +86,7 @@ Erzeugen Sie ein neues Schlüsselpaar aus öffentlichem und privatem Schlüssel 
 [you@laptop:~]$ ssh-keygen -a 100 -f ~/.ssh/id_ed25519 -t ed25519
 ```
 
-Wenn Sie dazu aufgefordert werden, geben Sie ein sicheres Passwort ein, das die [obigen Überlegungen berücksichtigt](#considerations-for-ssh-key-passwords). Beachten Sie, dass sich das Terminal nicht zu ändern scheint, während Sie das Passwort eingeben: Das ist zu Ihrer Sicherheit so gewollt. Sie werden aufgefordert, es noch einmal einzugeben, also machen Sie sich nicht zu viele Gedanken über Tippfehler.
+Wenn Sie dazu aufgefordert werden, geben Sie ein sicheres Passwort ein, das die [obigen Überlegungen berücksichtigt](## Überlegungen zu SSH-Schlüsselpasswörtern). Beachten Sie, dass sich das Terminal nicht zu ändern scheint, während Sie das Passwort eingeben: Das ist zu Ihrer Sicherheit so gewollt. Sie werden aufgefordert, es noch einmal einzugeben, also machen Sie sich nicht zu viele Gedanken über Tippfehler.
 
 Werfen Sie einen Blick in `~/.ssh` (verwenden Sie `ls ~/.ssh`). Sie sollten zwei neue Dateien sehen:
 
@@ -112,7 +112,7 @@ Wenn `~/.ssh/id_rsa` bereits existiert, müssen Sie einen anderen Namen für das
 [you@laptop:~]$ ssh-keygen -a 100 -b 4096 -f ~/.ssh/id_rsa -o -t rsa
 ```
 
-Wenn Sie dazu aufgefordert werden, geben Sie ein sicheres Passwort ein und beachten Sie dabei die [oben genannten Überlegungen](#considerations-for-ssh-key-passwords).
+Wenn Sie dazu aufgefordert werden, geben Sie ein sicheres Passwort ein und beachten Sie dabei die [oben genannten Überlegungen](## Überlegungen zu SSH-Schlüsselpasswörtern).
 
 Werfen Sie einen Blick in `~/.ssh` (verwenden Sie `ls ~/.ssh`). Sie sollten zwei neue Dateien sehen:
 
@@ -129,7 +129,7 @@ Wenn Sie PuTTY unter Windows verwenden, laden Sie `puttygen` herunter und verwen
 - Wählen Sie `255` als Schlüsselgröße oder -stärke.
 - Klicken Sie auf die Schaltfläche "Generate".
 - Sie müssen keinen Kommentar eingeben.
-- Wenn Sie dazu aufgefordert werden, geben Sie ein sicheres Passwort ein und beachten Sie dabei die [oben genannten Überlegungen](#considerations-for-ssh-key-passwords).
+- Wenn Sie dazu aufgefordert werden, geben Sie ein sicheres Passwort ein und beachten Sie dabei die [oben genannten Überlegungen](## Überlegungen zu SSH-Schlüsselpasswörtern).
 - Speichern Sie die Schlüssel in einem Ordner, den kein anderer Benutzer des Systems lesen kann.
 
 Werfen Sie einen Blick in den von Ihnen angegebenen Ordner. Sie sollten zwei neue Dateien sehen:
@@ -246,7 +246,7 @@ Sehr oft sind viele Benutzer versucht, sich eine Hochleistungsrechner-Installati
 login1
 ```
 
-Wir befinden uns also definitiv auf dem entfernten Rechner. Als Nächstes wollen wir herausfinden, wo wir uns befinden, indem wir `pwd` ausführen, um das **w**Arbeitsverzeichnis **d**auszugeben.
+Wir befinden uns also definitiv auf dem entfernten Rechner. Als Nächstes wollen wir herausfinden, wo wir uns befinden, indem wir `pwd` ausführen, um das Arbeitsverzeichnis (print working directory) auszugeben.
 
 ```bash
 [yourUsername@login1 ~] pwd
@@ -283,7 +283,7 @@ In der ersten Spalte ist `.` ein Verweis auf das aktuelle Verzeichnis und `..` e
 
 ::::::::::::::::::::::::::::::::::::::::: callout
 
-## There May Be a Better Way
+## Es gibt vielleicht einen besseren Weg
 
 Die Richtlinien und Praktiken für den Umgang mit SSH-Schlüsseln variieren von HPC-Cluster zu HPC-Cluster: Befolgen Sie die von den Cluster-Administratoren oder der Dokumentation bereitgestellten Hinweise. Insbesondere wenn es ein Online-Portal für die Verwaltung von SSH-Schlüsseln gibt, verwenden Sie dieses anstelle der hier beschriebenen Anweisungen.
 
