@@ -9,7 +9,7 @@ exercises: 5
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Beschreiben Sie, wie sich die Aktionen eines einzelnen Benutzers auf die Erfahrungen anderer Benutzer in einem gemeinsam genutzten System auswirken können.
+- Beschreiben Sie, wie sich die Aktionen eines einzelnen Nutzers auf die Erfahrungen anderer Nutzer in einem gemeinsam genutzten System auswirken können.
 - Diskutieren Sie das Verhalten eines rücksichtsvollen gemeinsamen Systembürgers.
 - Erklären Sie, wie wichtig es ist, kritische Daten zu sichern.
 - Beschreiben Sie die Herausforderungen bei der Übertragung großer Datenmengen von HPC-Systemen.
@@ -19,19 +19,19 @@ exercises: 5
 
 :::::::::::::::::::::::::::::::::::::::: questions
 
-- Wie kann ich ein verantwortlicher Benutzer sein?
+- Wie kann ich ein verantwortlicher Nutzer sein?
 - Wie kann ich meine Daten schützen?
 - Wie kann ich am besten große Datenmengen von einem HPC-System abrufen?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Einer der Hauptunterschiede zwischen der Nutzung entfernter HPC-Ressourcen und Ihrem eigenen System (z.B. Ihrem Laptop) ist, dass entfernte Ressourcen gemeinsam genutzt werden. Wie viele Benutzer sich die Ressourcen gleichzeitig teilen, ist von System zu System unterschiedlich, aber es ist unwahrscheinlich, dass Sie jemals der einzige Benutzer sind, der an einem solchen System angemeldet ist oder es benutzt.
+Einer der Hauptunterschiede zwischen der Nutzung entfernter HPC-Ressourcen und Ihrem eigenen System (z.B. Ihrem Laptop) ist, dass entfernte Ressourcen gemeinsam genutzt werden. Wie viele Nutzer sich die Ressourcen gleichzeitig teilen, ist von System zu System unterschiedlich, aber es ist unwahrscheinlich, dass Sie jemals der einzige Nutzer sind, der an einem solchen System angemeldet ist oder es benutzt.
 
-Der weit verbreitete Einsatz von Scheduling-Systemen, bei denen Benutzer Jobs auf HPC-Ressourcen einreichen, ist ein natürliches Ergebnis der gemeinsamen Nutzung dieser Ressourcen. Es gibt noch andere Dinge, die Sie als aufrechtes Mitglied der Gemeinschaft beachten müssen.
+Der weit verbreitete Einsatz von Scheduling-Systemen, bei denen Nutzer Jobs auf HPC-Ressourcen einreichen, ist ein natürliches Ergebnis der gemeinsamen Nutzung dieser Ressourcen. Es gibt noch andere Dinge, die Sie als aufrechtes Mitglied der Gemeinschaft beachten müssen.
 
 ## Sei nett zu den Login-Knoten
 
-Der Login-Knoten ist oft damit beschäftigt, alle angemeldeten Benutzer zu verwalten, Dateien zu erstellen und zu bearbeiten und Software zu kompilieren. Wenn dem Rechner der Speicher oder die Verarbeitungskapazität ausgeht, wird er sehr langsam und für alle unbrauchbar. Der Rechner soll zwar genutzt werden, aber bitte nur so, dass die anderen Benutzer nicht beeinträchtigt werden.
+Der Login-Knoten ist oft damit beschäftigt, alle angemeldeten Nutzer zu verwalten, Dateien zu erstellen und zu bearbeiten und Software zu kompilieren. Wenn dem Rechner der Speicher oder die Verarbeitungskapazität ausgeht, wird er sehr langsam und für alle unbrauchbar. Der Rechner soll zwar genutzt werden, aber bitte nur so, dass die anderen Nutzer nicht beeinträchtigt werden.
 
 Anmeldeknoten sind immer der richtige Ort, um Aufträge zu starten. Cluster-Richtlinien variieren, aber sie können auch zum Testen von Arbeitsabläufen verwendet werden, und in einigen Fällen können sie erweiterte clusterspezifische Debugging- oder Entwicklungstools hosten. Im Cluster gibt es möglicherweise Module, die geladen werden müssen, möglicherweise in einer bestimmten Reihenfolge, und Pfade oder Bibliotheksversionen, die sich von Ihrem Laptop unterscheiden. Ein interaktiver Testlauf auf dem Hauptknoten ist eine schnelle und zuverlässige Methode, um diese Probleme zu entdecken und zu beheben.
 
@@ -39,9 +39,9 @@ Anmeldeknoten sind immer der richtige Ort, um Aufträge zu starten. Cluster-Rich
 
 ## Anmeldeknoten sind eine gemeinsam genutzte Ressource
 
-Denken Sie daran, dass der Login-Knoten mit allen anderen Benutzern geteilt wird und dass Ihre Aktionen Probleme für andere Personen verursachen könnten. Denken Sie daher sorgfältig über die möglichen Auswirkungen von Befehlen nach, die große Mengen an Ressourcen verbrauchen können.
+Denken Sie daran, dass der Login-Knoten mit allen anderen Nutzern geteilt wird und dass Ihre Aktionen Probleme für andere Personen verursachen könnten. Denken Sie daher sorgfältig über die möglichen Auswirkungen von Befehlen nach, die große Mengen an Ressourcen verbrauchen können.
 
-Unsicher? Fragen Sie Ihren freundlichen Systemadministrator ("sysadmin"), ob das, was Sie vorhaben, für den Login-Knoten geeignet ist, oder ob es einen anderen Mechanismus gibt, um es sicher zu erledigen.
+Sie sind sich nicht sicher? Fragen Sie Ihren freundlichen Systemadministrator ("sysadmin"), ob das, was Sie vorhaben, für den Login-Knoten geeignet ist, oder ob es einen anderen Mechanismus gibt, um es sicher zu erledigen.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -66,7 +66,7 @@ Welcher dieser Befehle wäre eine Routineaufgabe, die auf dem Anmeldeknoten ausg
 
 Das Erstellen von Software, das Anlegen von Verzeichnissen und das Entpacken von Software sind übliche und akzeptable > Aufgaben für den Login-Knoten: Die Optionen #2 (`make`), #3 (`mkdir`) und #5 (`tar`) sind wahrscheinlich OK. Beachten Sie, dass Skriptnamen nicht immer ihren Inhalt widerspiegeln: bevor Sie #3 starten, prüfen Sie bitte `less create_directories.sh` und stellen Sie sicher, dass es sich nicht um ein trojanisches Pferd handelt.
 
-Das Ausführen ressourcenintensiver Anwendungen ist verpönt. Wenn Sie nicht sicher sind, dass andere Benutzer nicht beeinträchtigt werden, sollten Sie Aufträge wie #1 (`python`) oder #4 (benutzerdefinierter MD-Code) nicht ausführen. Wenn Sie unsicher sind, fragen Sie Ihren freundlichen Systemadministrator um Rat.
+Das Ausführen ressourcenintensiver Anwendungen ist verpönt. Wenn Sie nicht sicher sind, dass andere Nutzer nicht beeinträchtigt werden, sollten Sie Aufträge wie #1 (`python`) oder #4 (Nutzerdefinierter MD-Code) nicht ausführen. Wenn Sie unsicher sind, fragen Sie Ihren freundlichen Systemadministrator um Rat.
 
 
 
@@ -78,7 +78,7 @@ Wenn Sie Leistungsprobleme mit einem Anmeldeknoten haben, sollten Sie dies dem S
 
 ## Test vor der Skalierung
 
-Denken Sie daran, dass die Nutzung von gemeinsam genutzten Systemen in der Regel kostenpflichtig ist. Ein einfacher Fehler in einem Jobskript kann am Ende einen großen Teil des Ressourcenbudgets verschlingen. Stellen Sie sich vor, ein Jobskript mit einem Fehler, der dazu führt, dass es 24 Stunden lang auf 1000 Kernen nichts tut, oder eines, bei dem Sie versehentlich 2000 Kerne angefordert haben und nur 100 davon nutzen! Dieses Problem kann sich noch verschärfen, wenn Skripte geschrieben werden, die die Auftragsübermittlung automatisieren (z. B. wenn dieselbe Berechnung oder Analyse mit vielen verschiedenen Parametern oder Dateien ausgeführt wird). Dies schadet sowohl Ihnen (da Sie viele gebührenpflichtige Ressourcen verschwenden) als auch anderen Benutzern (denen der Zugriff auf die ungenutzten Rechenknoten verwehrt wird). Bei stark ausgelasteten Ressourcen kann es vorkommen, dass Sie tagelang in einer Warteschlange warten, bis Ihr Auftrag innerhalb von 10 Sekunden nach dem Start wegen eines trivialen Tippfehlers im Auftragsskript fehlschlägt. Das ist extrem frustrierend!
+Denken Sie daran, dass die Nutzung von gemeinsam genutzten Systemen in der Regel kostenpflichtig ist. Ein einfacher Fehler in einem Jobskript kann am Ende einen großen Teil des Ressourcenbudgets verschlingen. Stellen Sie sich vor, ein Jobskript mit einem Fehler, der dazu führt, dass es 24 Stunden lang auf 1000 Kernen nichts tut, oder eines, bei dem Sie versehentlich 2000 Kerne angefordert haben und nur 100 davon nutzen! Dieses Problem kann sich noch verschärfen, wenn Skripte geschrieben werden, die die Auftragsübermittlung automatisieren (z. B. wenn dieselbe Berechnung oder Analyse mit vielen verschiedenen Parametern oder Dateien ausgeführt wird). Dies schadet sowohl Ihnen (da Sie viele gebührenpflichtige Ressourcen verschwenden) als auch anderen Nutzern (denen der Zugriff auf die ungenutzten Rechenknoten verwehrt wird). Bei stark ausgelasteten Ressourcen kann es vorkommen, dass Sie tagelang in einer Warteschlange warten, bis Ihr Auftrag innerhalb von 10 Sekunden nach dem Start wegen eines trivialen Tippfehlers im Auftragsskript fehlschlägt. Das ist extrem frustrierend!
 
 Die meisten Systeme bieten spezielle Ressourcen zum Testen an, die kurze Wartezeiten haben, damit Sie dieses Problem vermeiden können.
 
@@ -118,7 +118,7 @@ Vergewissern Sie sich, dass Sie die Sicherungsrichtlinien für die Dateisysteme 
 
 ## Übertragen von Daten
 
-Wie bereits erwähnt, stehen viele Benutzer irgendwann vor der Herausforderung, große Datenmengen von HPC-Systemen zu übertragen (dies geschieht häufiger bei der Übertragung von Daten von als auf Systeme, aber die folgenden Ratschläge gelten in beiden Fällen). Die Geschwindigkeit der Datenübertragung kann durch viele verschiedene Faktoren begrenzt werden, so dass der am besten geeignete Datenübertragungsmechanismus von der Art der zu übertragenden Daten und dem Zielort der Daten abhängt.
+Wie bereits erwähnt, stehen viele Nutzer irgendwann vor der Herausforderung, große Datenmengen von HPC-Systemen zu übertragen (dies geschieht häufiger bei der Übertragung von Daten von als auf Systeme, aber die folgenden Ratschläge gelten in beiden Fällen). Die Geschwindigkeit der Datenübertragung kann durch viele verschiedene Faktoren begrenzt werden, so dass der am besten geeignete Datenübertragungsmechanismus von der Art der zu übertragenden Daten und dem Zielort der Daten abhängt.
 
 Die Komponenten zwischen der Quelle und dem Ziel Ihrer Daten haben unterschiedliche Leistungsniveaus und können insbesondere unterschiedliche Fähigkeiten in Bezug auf **Bandbreite** und **Latenz** haben.
 
@@ -129,7 +129,7 @@ Die Komponenten zwischen der Quelle und dem Ziel Ihrer Daten haben unterschiedli
 Einige der Schlüsselkomponenten und die damit verbundenen Probleme sind:
 
 - **Festplattengeschwindigkeit**: Dateisysteme auf HPC-Systemen sind oft hochgradig parallel und bestehen aus einer sehr großen Anzahl von Hochleistungslaufwerken. Dadurch können sie eine sehr hohe Datenbandbreite unterstützen. Wenn das entfernte System nicht über ein ähnlich paralleles Dateisystem verfügt, kann die Übertragungsgeschwindigkeit durch die dortige Festplattenleistung begrenzt sein.
-- **Metadaten-Leistung**: *Metadaten-Operationen* wie das Öffnen und Schließen von Dateien oder das Auflisten des Besitzers oder der Größe einer Datei sind viel weniger parallel als Lese-/Schreiboperationen. Wenn Ihre Daten aus einer sehr großen Anzahl kleiner Dateien bestehen, kann es sein, dass Ihre Übertragungsgeschwindigkeit durch Metadatenoperationen begrenzt wird. Metadaten-Operationen, die von anderen Benutzern des Systems durchgeführt werden, können auch stark mit den von Ihnen durchgeführten Operationen interagieren, so dass eine Verringerung der Anzahl solcher Operationen (durch Zusammenfassen mehrerer Dateien zu einer einzigen Datei) die Variabilität Ihrer Übertragungsraten verringern und die Übertragungsgeschwindigkeit erhöhen kann.
+- **Metadaten-Leistung**: *Metadaten-Operationen* wie das Öffnen und Schließen von Dateien oder das Auflisten des Besitzers oder der Größe einer Datei sind viel weniger parallel als Lese-/Schreiboperationen. Wenn Ihre Daten aus einer sehr großen Anzahl kleiner Dateien bestehen, kann es sein, dass Ihre Übertragungsgeschwindigkeit durch Metadatenoperationen begrenzt wird. Metadaten-Operationen, die von anderen Nutzern des Systems durchgeführt werden, können auch stark mit den von Ihnen durchgeführten Operationen interagieren, so dass eine Verringerung der Anzahl solcher Operationen (durch Zusammenfassen mehrerer Dateien zu einer einzigen Datei) die Variabilität Ihrer Übertragungsraten verringern und die Übertragungsgeschwindigkeit erhöhen kann.
 - **Netzwerkgeschwindigkeit**: Die Leistung der Datenübertragung kann durch die Netzwerkgeschwindigkeit begrenzt werden. Noch wichtiger ist, dass sie durch den langsamsten Abschnitt des Netzwerks zwischen Quelle und Ziel begrenzt wird. Wenn Sie die Daten auf Ihren Laptop/Arbeitsplatz übertragen, ist dies wahrscheinlich seine Verbindung (entweder über LAN oder WiFi).
 - **Firewall-Geschwindigkeit**: Die meisten modernen Netzwerke sind durch eine Art Firewall geschützt, die bösartigen Datenverkehr herausfiltert. Diese Filterung ist mit einem gewissen Overhead verbunden und kann zu einer Verringerung der Datenübertragungsleistung führen. Die Anforderungen eines Allzwecknetzes, das E-Mail-/Web-Server und Desktop-Rechner beherbergt, unterscheiden sich deutlich von denen eines Forschungsnetzes, das große Datenmengen übertragen muss. Wenn Sie versuchen, Daten zu oder von einem Host in einem Netzwerk für allgemeine Zwecke zu übertragen, werden Sie feststellen, dass die Firewall dieses Netzwerks die erreichbare Übertragungsrate begrenzt.
 
