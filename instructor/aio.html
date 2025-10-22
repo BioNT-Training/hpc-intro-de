@@ -319,7 +319,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="16-transferring-files.html">7. Übertragen von Dateien mit entfernten Computern</a>
+        <a href="16-transferring-files.html">7. Übertragen von Dateien mit remote Computern</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -534,7 +534,7 @@ erhalten.</p>
   Einige Ideen
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ul>
 <li>Abrufen von E-Mails: Ihr Computer (möglicherweise in Ihrer
@@ -2524,7 +2524,7 @@ des Programmverhaltens</h3>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Die Variable <code>TIME_STYLE</code> wird von <code>ls</code> nicht
 <em>gesehen</em>, bis sie exportiert wird. Zu diesem Zeitpunkt wird sie
@@ -2565,7 +2565,7 @@ er das Verzeichnis ausgibt, von dem aus der Job übermittelt wurde.</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3093,7 +3093,7 @@ geladen ist).</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3138,7 +3138,7 @@ Paketkonflikte.</li>
 </div>
 </div>
 </div>
-</section></section><section id="aio-16-transferring-files"><p>Content from <a href="16-transferring-files.html">Übertragen von Dateien mit entfernten Computern</a></p>
+</section></section><section id="aio-16-transferring-files"><p>Content from <a href="16-transferring-files.html">Übertragen von Dateien mit remote Computern</a></p>
 <hr>
 <p>Zuletzt aktualisiert am 2025-10-22 |
 
@@ -3172,11 +3172,11 @@ Paketkonflikte.</li>
 </div>
 </div>
 </div>
-<p>Die Arbeit auf einem entfernten Computer ist nicht sehr nützlich,
-wenn wir keine Dateien zum oder vom Cluster bekommen können. Es gibt
-mehrere Optionen für die Übertragung von Daten zwischen
-Computerressourcen mit Hilfe von CLI- und GUI-Dienstprogrammen, von
-denen wir einige vorstellen werden.</p>
+<p>Die Arbeit auf einem remote Computer ist nicht sehr nützlich, wenn
+wir keine Dateien zum oder vom Cluster bekommen können. Es gibt mehrere
+Optionen für die Übertragung von Daten zwischen Computerressourcen mit
+Hilfe von CLI- und GUI-Dienstprogrammen, von denen wir einige vorstellen
+werden.</p>
 <section><h2 class="section-heading" id="herunterladen-von-lektionsdateien-aus-dem-internet">Herunterladen von Lektionsdateien aus dem Internet<a class="anchor" aria-label="anchor" href="#herunterladen-von-lektionsdateien-aus-dem-internet"></a>
 </h2>
 <hr class="half-width">
@@ -3256,7 +3256,7 @@ URL-Umleitungen zu folgen (was <code>wget</code> standardmäßig tut).</p>
 </h2>
 <hr class="half-width">
 <p>Eine der größten Herausforderungen bei der Übertragung von Daten
-zwischen entfernten HPC-Systemen ist die große Anzahl von Dateien. Die
+zwischen remote HPC-Systemen ist die große Anzahl von Dateien. Die
 Übertragung jeder einzelnen Datei ist mit einem Overhead verbunden, und
 wenn wir eine große Anzahl von Dateien übertragen, verlangsamen diese
 Overheads unsere Übertragungen in hohem Maße.</p>
@@ -3279,12 +3279,12 @@ namens “amdahl” beziehen, in eine einzige Datei mit <code>tar</code>
 verpackt hat und dann dieses Archiv mit <code>gzip</code> komprimiert
 hat, um Platz zu sparen.</p>
 <p>Schauen wir mal, ob das der Fall ist, <em>ohne</em> die Datei zu
-entpacken. <code>tar</code> gibt das “<strong>t</strong>able of
-contents” mit dem <code>-t</code> Flag aus, für die mit dem
-<code>-f</code> Flag angegebene Datei, gefolgt vom Dateinamen. Beachten
-Sie, dass Sie die beiden Flags verketten können: das Schreiben von
-<code>-t -f</code> ist austauschbar mit dem Schreiben von
-<code>-tf</code> zusammen. Allerdings muss das Argument nach
+entpacken. <code>tar</code> gibt das Inhaltsverzeichnis
+(“<strong>t</strong>able of contents”) mit dem <code>-t</code> Flag aus,
+für die mit dem <code>-f</code> Flag angegebene Datei, gefolgt vom
+Dateinamen. Beachten Sie, dass Sie die beiden Flags verketten können:
+das Schreiben von <code>-t -f</code> ist austauschbar mit dem Schreiben
+von <code>-tf</code> zusammen. Allerdings muss das Argument nach
 <code>-f</code> ein Dateiname sein, also funktioniert <code>-ft</code>
 <em>nicht</em>.</p>
 <div class="codewrapper sourceCode" id="cb3">
@@ -3370,8 +3370,8 @@ etwas Passenderes.</p>
 </div>
 <p>Überprüfen Sie die Größe des extrahierten Verzeichnisses und
 vergleichen Sie sie mit der Größe der komprimierten Datei, indem Sie
-<code>du</code> für “<strong>d</strong>isk <strong>u</strong>sage”
-verwenden.</p>
+<code>du</code> für “<strong>d</strong>isk <strong>u</strong>sage” (also
+Festplattennutzung) verwenden.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -3468,12 +3468,12 @@ der Vorlagenbefehl</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> scp local_file yourUsername@cluster.hpc-carpentry.org:remote_destination</span></code></pre>
 </div>
 <p>an, wobei <code>@</code> und <code>:</code> Feldtrennzeichen sind und
-<code>remote_destination</code> ein Pfad relativ zu Ihrem entfernten
+<code>remote_destination</code> ein Pfad relativ zu Ihrem remote
 Heimatverzeichnis oder ein neuer Dateiname ist, wenn Sie ihn ändern
 möchten, oder sowohl ein relativer Pfad <em>als auch</em> ein neuer
 Dateiname. Wenn Sie keinen bestimmten Ordner im Sinn haben, können Sie
 das <code>remote_destination</code> weglassen und die Datei wird in Ihr
-Heimatverzeichnis auf dem entfernten Computer kopiert (mit ihrem
+Heimatverzeichnis auf dem remote Computer kopiert (mit ihrem
 ursprünglichen Namen). Wenn Sie ein <code>remote_destination</code>
 einschließen, beachten Sie, dass <code>scp</code> dies genauso
 interpretiert wie <code>cp</code> beim Erstellen von lokalen Kopien:
@@ -3574,13 +3574,13 @@ dauern, bis es abgeschlossen ist.</p>
 </div>
 </div>
 <p>Bei der Verwendung von <code>scp</code> ist Ihnen vielleicht
-aufgefallen, dass ein <code>:</code> <em>immer</em> dem Namen des
-entfernten Computers folgt. Eine Zeichenkette <em>nach</em> dem
-<code>:</code> gibt das entfernte Verzeichnis an, in das Sie die Datei
-oder den Ordner übertragen wollen, einschließlich eines neuen Namens,
-wenn Sie das entfernte Material umbenennen wollen. Wenn Sie dieses Feld
-leer lassen, ist <code>scp</code> standardmäßig Ihr Heimatverzeichnis
-und der Name des zu übertragenden lokalen Materials.</p>
+aufgefallen, dass ein <code>:</code> <em>immer</em> dem Namen des remote
+Computers folgt. Eine Zeichenkette <em>nach</em> dem <code>:</code> gibt
+das entfernte Verzeichnis an, in das Sie die Datei oder den Ordner
+übertragen wollen, einschließlich eines neuen Namens, wenn Sie das
+entfernte Material umbenennen wollen. Wenn Sie dieses Feld leer lassen,
+ist <code>scp</code> standardmäßig Ihr Heimatverzeichnis und der Name
+des zu übertragenden lokalen Materials.</p>
 <p>Auf Linux-Computern ist <code>/</code> das Trennzeichen in Datei-
 oder Verzeichnispfaden. Ein Pfad, der mit <code>/</code> beginnt, wird
 <em>absolut</em> genannt, da es nichts oberhalb der Wurzel
@@ -3625,9 +3625,8 @@ Computern.</p>
 <p>Die Optionen sind:</p>
 <ul>
 <li>
-<code>-a</code> (<strong>ein</strong>Archiv), um u.a.
-Datei-Zeitstempel, Berechtigungen und Ordner zu erhalten; impliziert
-Rekursion</li>
+<code>-a</code> (ein Archiv), um u.a. Datei-Zeitstempel,
+Berechtigungen und Ordner zu erhalten; impliziert Rekursion</li>
 <li>
 <code>-v</code> (<strong>v</strong>erbose), um eine ausführliche
 Ausgabe zu erhalten, die Ihnen hilft, die Übertragung zu überwachen</li>
@@ -3644,7 +3643,7 @@ Optionen verwenden:</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="ex">[you@laptop:~]$</span> rsync <span class="at">-avP</span> amdahl yourUsername@cluster.hpc-carpentry.org:~/</span></code></pre>
 </div>
 <p>Wie geschrieben, wird das lokale Verzeichnis und sein Inhalt unter
-Ihrem Heimatverzeichnis auf dem entfernten System abgelegt. Wenn ein
+Ihrem Heimatverzeichnis auf dem remote System abgelegt. Wenn ein
 abschließender Schrägstrich an die Quelle angehängt wird, wird kein
 neues Verzeichnis erstellt, das dem übertragenen Verzeichnis entspricht,
 und der Inhalt des Quellverzeichnisses wird direkt in das
@@ -3716,7 +3715,7 @@ in diesem Fall der Standardwert ist: 22.)</p>
 </h2>
 <hr class="half-width">
 <p>FileZilla ist ein plattformübergreifender Client für das
-Herunterladen und Hochladen von Dateien auf und von einem entfernten
+Herunterladen und Hochladen von Dateien auf und von einem remote
 Computer. Er ist absolut narrensicher und funktioniert immer gut. Er
 verwendet das <code>sftp</code>-Protokoll. Sie können mehr über die
 Verwendung des <code>sftp</code>-Protokolls in der Kommandozeile in der
@@ -3736,16 +3735,16 @@ Anmeldedaten oben auf dem Bildschirm eingeben:</p>
 <li>Port: (leer lassen, um den Standardport zu verwenden)</li>
 </ul>
 <p>Drücken Sie “Quickconnect”, um eine Verbindung herzustellen. Ihre
-entfernten Dateien sollten auf der rechten Seite des Bildschirms
-angezeigt werden. Sie können Dateien per Drag-and-Drop zwischen der
-linken (lokalen) und der rechten (entfernten) Seite des Bildschirms
-verschieben, um Dateien zu übertragen.</p>
+remote Dateien sollten auf der rechten Seite des Bildschirms angezeigt
+werden. Sie können Dateien per Drag-and-Drop zwischen der linken
+(lokalen) und der rechten (remote) Seite des Bildschirms verschieben, um
+Dateien zu übertragen.</p>
 <p>Wenn Sie große Dateien (in der Regel größer als ein Gigabyte) von
-einem entfernten Computer auf einen anderen übertragen müssen, melden
-Sie sich per SSH auf dem Computer an, auf dem sich die Dateien befinden,
-und verwenden Sie <code>scp</code> oder <code>rsync</code>, um die
-Dateien auf den anderen Computer zu übertragen. Dies ist effizienter als
-die Verwendung von FileZilla (oder ähnlichen Anwendungen), die von der
+einem remote Computer auf einen anderen übertragen müssen, melden Sie
+sich per SSH auf dem Computer an, auf dem sich die Dateien befinden, und
+verwenden Sie <code>scp</code> oder <code>rsync</code>, um die Dateien
+auf den anderen Computer zu übertragen. Dies ist effizienter als die
+Verwendung von FileZilla (oder ähnlichen Anwendungen), die von der
 Quelle auf Ihren lokalen Rechner und dann auf den Zielrechner kopieren
 würden.</p>
 <div id="keypoints1" class="callout keypoints">
@@ -4029,7 +4028,7 @@ Reihenfolge: das Neueste zuerst. Wie lautete die Ausgabe?</p>
   Lesen der Job-Ausgabe
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>Die Cluster-Ausgabe sollte in eine Datei in dem Ordner geschrieben
 werden, aus dem Sie den Job gestartet haben. Zum Beispiel,</p>
@@ -4217,7 +4216,7 @@ Auftrag: Bedeutet das, dass er in ¼ der Zeit fertig wurde?</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Der parallele Auftrag hat <em>weniger</em> Zeit benötigt: 11 Sekunden
 sind besser als 30! Aber es ist nur eine 2,7-fache Verbesserung, nicht
@@ -4640,7 +4639,7 @@ Zeitschätzung zu erhalten. Wie nah können Sie herankommen?</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Die folgende Zeile teilt Slurm mit, dass unser Auftrag innerhalb von
 2 Minuten beendet sein soll:</p>
@@ -4799,7 +4798,7 @@ Anmeldeknoten ausgeführt werden sollte?</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Das Erstellen von Software, das Anlegen von Verzeichnissen und das
 Entpacken von Software sind übliche und akzeptable &gt; Aufgaben für den
@@ -5041,7 +5040,7 @@ nach HPC Carpentry’s Cloud Cluster zu übertragen?</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>
