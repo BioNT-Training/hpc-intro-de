@@ -474,8 +474,8 @@ werden <code>sacct -u yourUsername</code> verwenden, um Statistiken über
 9.batch           batch            def-spons+          1  COMPLETED      0:0
 9.extern         extern            def-spons+          1  COMPLETED      0:0</code></pre>
 </div>
-<p>Hier werden alle Aufträge angezeigt, die heute ausgeführt wurden
-(beachten Sie, dass es mehrere Einträge pro Auftrag gibt). Um
+<p>Hier werden alle Aufträge (oder Jobs) angezeigt, die heute ausgeführt
+wurden (beachten Sie, dass es mehrere Einträge pro Auftrag gibt). Um
 Informationen über einen bestimmten Auftrag zu erhalten (z. B. 347087),
 ändern wir den Befehl leicht ab.</p>
 <div class="codewrapper sourceCode" id="cb3">
@@ -543,7 +543,7 @@ Zeitschätzung zu erhalten. Wie nah können Sie herankommen?</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>Die folgende Zeile teilt Slurm mit, dass unser Auftrag innerhalb von
 2 Minuten beendet sein soll:</p>
