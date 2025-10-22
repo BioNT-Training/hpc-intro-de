@@ -59,7 +59,7 @@ zu lösen.
 
 Öffnen Sie den [HPC Jargon Buster](../files/jargon#p1) in einer neuen Registerkarte. Um
 den Inhalt zu präsentieren, drücken Sie `C`, um eine **c**lone in einem separaten
-Fenster zu öffnen, und drücken Sie dann `P`, um den **p**Darstellungsmodus umzuschalten.
+Fenster zu öffnen, und drücken Sie dann `P`, um den Darstellungsmodus (**p**resentation) umzuschalten.
 
 :::::::::::::::::::::::::::::::::::::: challenge
 
