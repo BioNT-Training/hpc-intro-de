@@ -53,7 +53,7 @@ Das Amdahl-Programm ist in Python geschrieben, und um es zu installieren oder zu
 
 ### MPI für Python
 
-Der Amdahl-Code ist von einem Prozess abhängig: **mpi4py**. Wenn es nicht bereits auf dem Cluster installiert ist, wird `pip` versuchen, mpi4py aus dem Internet zu holen und für Sie zu installieren. Wenn dies aufgrund einer Einweg-Firewall fehlschlägt, müssen Sie mpi4py auf Ihrem lokalen Rechner abrufen und hochladen, so wie wir es für Amdahl getan haben.
+Der Amdahl-Code ist von einem Prozess abhängig: **mpi4py**. Wenn es nicht bereits auf dem Cluster installiert ist, wird `pip` versuchen, mpi4py aus dem Internet zu laden und für Sie zu installieren. Wenn dies aufgrund einer Einweg-Firewall fehlschlägt, müssen Sie mpi4py auf Ihrem lokalen Rechner abrufen und hochladen, so wie wir es für Amdahl getan haben.
 
 :::::::::::::::::::::::::::::::::::::: discussion
 
@@ -392,7 +392,7 @@ Total execution time (according to rank 0): 7.697 seconds
 
 ## Nicht-lineare Ausgabe
 
-Wenn wir den Job mit 4 parallelen Arbeitern ausgeführt haben, hat der serielle Job zuerst seine Ausgabe geschrieben, dann haben die parallelen Prozesse ihre Ausgabe geschrieben, wobei Prozess 0 zuerst und zuletzt kam.
+Wenn wir den Job mit 4 parallelen Workern ausgeführt haben, hat der serielle Job zuerst seine Ausgabe geschrieben, dann haben die parallelen Prozesse ihre Ausgabe geschrieben, wobei Prozess 0 zuerst und zuletzt kam.
 
 Bei 8 Workern ist dies nicht der Fall: Da die parallelen Worker weniger Zeit benötigen als die seriellen, ist es schwer zu sagen, welcher Prozess seine Ausgabe zuerst schreiben wird, außer dass es *nicht* Prozess 0 sein wird!
 
