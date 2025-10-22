@@ -512,8 +512,7 @@ verwenden.</p>
 <p>Anfangs ist Python 3 nicht geladen. Wir können dies mit dem Befehl
 <code>which</code> testen. der Befehl <code>which</code> sucht auf die
 gleiche Weise wie die Bash nach Programmen, so dass wir ihn verwenden
-können, um uns zu sagen, wo ein bestimmtes Stück Software gespeichert
-ist.</p>
+können, um uns zu sagen, wo eine bestimmte Software gespeichert ist.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -588,7 +587,7 @@ mit <code>echo</code> ausgeben.</p>
 <code>which</code> feststellen. In diesem Fall gibt es nur einen
 Unterschied: das andere Verzeichnis am Anfang. Als wir den Befehl
 <code>module load</code> ausführten, fügte er ein Verzeichnis am Anfang
-unserer <code>$PATH</code> hinzu. Schauen wir uns an, was dort
+unseres <code>$PATH</code> hinzu. Schauen wir uns an, was dort
 steht:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -702,9 +701,9 @@ einmal entladen wollten, könnten wir <code>module purge</code> ausführen
 <pre class="output" tabindex="0"><code>No modules loaded</code></pre>
 </div>
 <p>Beachten Sie, dass <code>module purge</code> informativ ist. Es teilt
-uns auch mit, ob ein Standardsatz von “klebrigen” Paketen nicht entladen
-werden kann (und wie man diese tatsächlich entlädt, wenn man das
-wirklich möchte).</p>
+uns auch mit, ob ein Standardsatz von “anhaftenden” (“sticky”) Paketen
+nicht entladen werden kann (und wie man diese tatsächlich entlädt, wenn
+man das wirklich möchte).</p>
 <p>Beachten Sie, dass dieser Modulladeprozess hauptsächlich durch die
 Manipulation von Umgebungsvariablen wie <code>$PATH</code> erfolgt.
 Normalerweise ist nur ein geringer oder gar kein Datentransfer
@@ -778,7 +777,7 @@ geladen ist).</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>

@@ -2524,7 +2524,7 @@ des Programmverhaltens</h3>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Die Variable <code>TIME_STYLE</code> wird von <code>ls</code> nicht
 <em>gesehen</em>, bis sie exportiert wird. Zu diesem Zeitpunkt wird sie
@@ -2565,7 +2565,7 @@ er das Verzeichnis ausgibt, von dem aus der Job übermittelt wurde.</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2826,8 +2826,7 @@ verwenden.</p>
 <p>Anfangs ist Python 3 nicht geladen. Wir können dies mit dem Befehl
 <code>which</code> testen. der Befehl <code>which</code> sucht auf die
 gleiche Weise wie die Bash nach Programmen, so dass wir ihn verwenden
-können, um uns zu sagen, wo ein bestimmtes Stück Software gespeichert
-ist.</p>
+können, um uns zu sagen, wo eine bestimmte Software gespeichert ist.</p>
 <div class="codewrapper sourceCode" id="cb5">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -2902,7 +2901,7 @@ mit <code>echo</code> ausgeben.</p>
 <code>which</code> feststellen. In diesem Fall gibt es nur einen
 Unterschied: das andere Verzeichnis am Anfang. Als wir den Befehl
 <code>module load</code> ausführten, fügte er ein Verzeichnis am Anfang
-unserer <code>$PATH</code> hinzu. Schauen wir uns an, was dort
+unseres <code>$PATH</code> hinzu. Schauen wir uns an, was dort
 steht:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3016,9 +3015,9 @@ einmal entladen wollten, könnten wir <code>module purge</code> ausführen
 <pre class="output" tabindex="0"><code>No modules loaded</code></pre>
 </div>
 <p>Beachten Sie, dass <code>module purge</code> informativ ist. Es teilt
-uns auch mit, ob ein Standardsatz von “klebrigen” Paketen nicht entladen
-werden kann (und wie man diese tatsächlich entlädt, wenn man das
-wirklich möchte).</p>
+uns auch mit, ob ein Standardsatz von “anhaftenden” (“sticky”) Paketen
+nicht entladen werden kann (und wie man diese tatsächlich entlädt, wenn
+man das wirklich möchte).</p>
 <p>Beachten Sie, dass dieser Modulladeprozess hauptsächlich durch die
 Manipulation von Umgebungsvariablen wie <code>$PATH</code> erfolgt.
 Normalerweise ist nur ein geringer oder gar kein Datentransfer
@@ -3094,7 +3093,7 @@ geladen ist).</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3231,7 +3230,7 @@ den Tarball unter <code>amdahl.tar.gz</code> zu speichern.</p>
   wget und curl Befehle
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb1">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3518,7 +3517,7 @@ dies fehlschlagen kann, und das ist OK!</p>
   Befehle
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -3696,7 +3695,7 @@ der “Hilfe” nach <code>rsync</code>.</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -4030,7 +4029,7 @@ Reihenfolge: das Neueste zuerst. Wie lautete die Ausgabe?</p>
   Lesen der Job-Ausgabe
   </h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
 <p>Die Cluster-Ausgabe sollte in eine Datei in dem Ordner geschrieben
 werden, aus dem Sie den Job gestartet haben. Zum Beispiel,</p>
@@ -4218,7 +4217,7 @@ Auftrag: Bedeutet das, dass er in ¼ der Zeit fertig wurde?</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Der parallele Auftrag hat <em>weniger</em> Zeit benötigt: 11 Sekunden
 sind besser als 30! Aber es ist nur eine 2,7-fache Verbesserung, nicht
@@ -4800,7 +4799,7 @@ Anmeldeknoten ausgeführt werden sollte?</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Das Erstellen von Software, das Anlegen von Verzeichnissen und das
 Entpacken von Software sind übliche und akzeptable &gt; Aufgaben für den
@@ -5042,7 +5041,7 @@ nach HPC Carpentry’s Cloud Cluster zu übertragen?</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <ol style="list-style-type: decimal">
 <li>
