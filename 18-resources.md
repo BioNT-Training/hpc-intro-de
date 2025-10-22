@@ -59,7 +59,7 @@ Da wir `amdahl` bereits zur Ausführung im Cluster eingereicht haben, können wi
 9.extern         extern            def-spons+          1  COMPLETED      0:0
 ```
 
-Hier werden alle Aufträge angezeigt, die heute ausgeführt wurden (beachten Sie, dass es mehrere Einträge pro Auftrag gibt). Um Informationen über einen bestimmten Auftrag zu erhalten (z. B. 347087), ändern wir den Befehl leicht ab.
+Hier werden alle Aufträge (oder Jobs) angezeigt, die heute ausgeführt wurden (beachten Sie, dass es mehrere Einträge pro Auftrag gibt). Um Informationen über einen bestimmten Auftrag zu erhalten (z. B. 347087), ändern wir den Befehl leicht ab.
 
 ```bash
 [yourUsername@login1 ~] sacct -u yourUsername -l -j 347087
