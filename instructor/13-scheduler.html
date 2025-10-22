@@ -486,7 +486,7 @@ unserem Anmeldeknoten ausgeführt?</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -525,8 +525,8 @@ die Ausführung der Arbeit identifiziert hat.</p>
 Unsere Arbeit ist getan - jetzt übernimmt der Scheduler und versucht,
 den Auftrag für uns auszuführen. Während der Auftrag darauf wartet,
 ausgeführt zu werden, wird er in eine Liste von Aufträgen aufgenommen,
-die <em>Warteschlange</em>. Um den Status unseres Jobs zu überprüfen,
-können wir die Warteschlange mit dem Befehl
+die <em>Warteschlange</em>. Um den Status unseres Jobs (oder Auftrags)
+zu überprüfen, können wir die Warteschlange mit dem Befehl
 <code>squeue -u yourUsername</code> überprüfen.</p>
 <div class="codewrapper sourceCode" id="cb7">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -672,7 +672,7 @@ lang läuft, und senden Sie dann einen Job dafür an den Cluster.</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -702,7 +702,7 @@ identisch?</p>
 </div>
 <p>Ressourcenanforderungen sind normalerweise verbindlich. Wenn Sie
 diese überschreiten, wird Ihr Auftrag abgebrochen. Nehmen wir die
-Wandzeit als Beispiel. Wir fordern 1 Minute Wandzeit an und versuchen,
+Walltime als Beispiel. Wir fordern 1 Minute Walltime an und versuchen,
 einen Auftrag zwei Minuten lang laufen zu lassen.</p>
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -815,7 +815,7 @@ abzubrechen.</p>
   Lösung
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Übermitteln Sie zunächst ein Trio von Jobs:</p>
 <div class="codewrapper sourceCode" id="cb25">
