@@ -87,7 +87,7 @@ No Modulefiles Currently Loaded.
 
 Um ein Softwaremodul zu laden, verwenden Sie `module load`. In diesem Beispiel werden wir Python 3 verwenden.
 
-Anfangs ist Python 3 nicht geladen. Wir können dies mit dem Befehl `which` testen. der Befehl `which` sucht auf die gleiche Weise wie die Bash nach Programmen, so dass wir ihn verwenden können, um uns zu sagen, wo ein bestimmtes Stück Software gespeichert ist.
+Anfangs ist Python 3 nicht geladen. Wir können dies mit dem Befehl `which` testen. der Befehl `which` sucht auf die gleiche Weise wie die Bash nach Programmen, so dass wir ihn verwenden können, um uns zu sagen, wo eine bestimmte Software gespeichert ist.
 
 ```bash
 [yourUsername@login1 ~] which python3
@@ -144,7 +144,7 @@ Um die Ausgabe zu verstehen, müssen wir zuerst die Natur der Umgebungsvariablen
 /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/SQLite/3.31.1-GCCcore-x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Tcl/8.6.10-GCCcore-x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/GCCcore/x.y.z/bin:/cvmfs/pilot.eessi-hpc.org/2020.12/compat/linux/x86_64/usr/bin:/opt/software/slurm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/opt/puppetlabs/bin:/home/user01/.local/bin:/home/user01/bin
 ```
 
-Sie werden eine Ähnlichkeit mit der Ausgabe des Befehls `which` feststellen. In diesem Fall gibt es nur einen Unterschied: das andere Verzeichnis am Anfang. Als wir den Befehl `module load` ausführten, fügte er ein Verzeichnis am Anfang unserer `$PATH` hinzu. Schauen wir uns an, was dort steht:
+Sie werden eine Ähnlichkeit mit der Ausgabe des Befehls `which` feststellen. In diesem Fall gibt es nur einen Unterschied: das andere Verzeichnis am Anfang. Als wir den Befehl `module load` ausführten, fügte er ein Verzeichnis am Anfang unseres `$PATH` hinzu. Schauen wir uns an, was dort steht:
 
 ```bash
 [yourUsername@login1 ~] ls /cvmfs/pilot.eessi-hpc.org/2020.12/software/x86_64/amd/zen2/software/Python/3.x.y-GCCcore-x.y.z/bin
@@ -237,7 +237,7 @@ Die Verwendung von `module unload` "entlädt" also ein Modul, und je nachdem, wi
 No modules loaded
 ```
 
-Beachten Sie, dass `module purge` informativ ist. Es teilt uns auch mit, ob ein Standardsatz von "klebrigen" Paketen nicht entladen werden kann (und wie man diese tatsächlich entlädt, wenn man das wirklich möchte).
+Beachten Sie, dass `module purge` informativ ist. Es teilt uns auch mit, ob ein Standardsatz von "anhaftenden" ("sticky") Paketen nicht entladen werden kann (und wie man diese tatsächlich entlädt, wenn man das wirklich möchte).
 
 Beachten Sie, dass dieser Modulladeprozess hauptsächlich durch die Manipulation von Umgebungsvariablen wie `$PATH` erfolgt. Normalerweise ist nur ein geringer oder gar kein Datentransfer beteiligt.
 
