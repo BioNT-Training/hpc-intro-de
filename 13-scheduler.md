@@ -91,7 +91,7 @@ Um diese Aufgabe an den Scheduler zu senden, benutzen wir den Befehl `sbatch`. D
 Submitted batch job 7
 ```
 
-Und das ist alles, was wir tun müssen, um einen Auftrag abzuschicken. Unsere Arbeit ist getan - jetzt übernimmt der Scheduler und versucht, den Auftrag für uns auszuführen. Während der Auftrag darauf wartet, ausgeführt zu werden, wird er in eine Liste von Aufträgen aufgenommen, die *Warteschlange*. Um den Status unseres Jobs zu überprüfen, können wir die Warteschlange mit dem Befehl `squeue -u yourUsername` überprüfen.
+Und das ist alles, was wir tun müssen, um einen Auftrag abzuschicken. Unsere Arbeit ist getan - jetzt übernimmt der Scheduler und versucht, den Auftrag für uns auszuführen. Während der Auftrag darauf wartet, ausgeführt zu werden, wird er in eine Liste von Aufträgen aufgenommen, die *Warteschlange*. Um den Status unseres Jobs (oder Auftrags) zu überprüfen, können wir die Warteschlange mit dem Befehl `squeue -u yourUsername` überprüfen.
 
 ```bash
 [yourUsername@login1 ~] squeue -u yourUsername
@@ -201,7 +201,7 @@ Warum sind die Slurm Laufzeit und die `sleep` Zeit nicht identisch?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Ressourcenanforderungen sind normalerweise verbindlich. Wenn Sie diese überschreiten, wird Ihr Auftrag abgebrochen. Nehmen wir die Wandzeit als Beispiel. Wir fordern 1 Minute Wandzeit an und versuchen, einen Auftrag zwei Minuten lang laufen zu lassen.
+Ressourcenanforderungen sind normalerweise verbindlich. Wenn Sie diese überschreiten, wird Ihr Auftrag abgebrochen. Nehmen wir die Walltime als Beispiel. Wir fordern 1 Minute Walltime an und versuchen, einen Auftrag zwei Minuten lang laufen zu lassen.
 
 ```bash
 [yourUsername@login1 ~] cat example-job.sh
