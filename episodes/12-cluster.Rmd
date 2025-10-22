@@ -29,13 +29,13 @@ source("load_config.R")
 
 Die Begriffe "Cloud", "Cluster" und "High-Performance Computing" oder "HPC" werden in verschiedenen Zusammenhängen und mit unterschiedlichen Bedeutungen verwendet. Was bedeuten sie also? Und was noch wichtiger ist: Wie verwenden wir sie bei unserer Arbeit?
 
-Die *Wolke* ist ein allgemeiner Begriff, der sich auf Computerressourcen bezieht, die a) den Benutzern auf Anfrage oder nach Bedarf *zur Verfügung gestellt* werden und b) reale oder *virtuelle* Ressourcen darstellen, die sich überall auf der Erde befinden können. So kann beispielsweise ein großes Unternehmen mit Rechenressourcen in Brasilien, Simbabwe und Japan diese Ressourcen als seine eigene *interne* Cloud verwalten, und dasselbe Unternehmen kann auch kommerzielle Cloud-Ressourcen von Amazon oder Google nutzen. Cloud-Ressourcen können sich auf Maschinen beziehen, die relativ einfache Aufgaben ausführen, wie z. B. die Bereitstellung von Websites, die Bereitstellung von gemeinsamem Speicherplatz, die Bereitstellung von Webdiensten (z. B. E-Mail oder Social-Media-Plattformen) sowie traditionellere rechenintensive Aufgaben wie die Ausführung einer Simulation.
+Die *Cloud* ist ein allgemeiner Begriff, der sich auf Computerressourcen bezieht, die a) den Benutzern auf Anfrage oder nach Bedarf *zur Verfügung gestellt* werden und b) reale oder *virtuelle* Ressourcen darstellen, die sich überall auf der Erde befinden können. So kann beispielsweise ein großes Unternehmen mit Rechenressourcen in Brasilien, Simbabwe und Japan diese Ressourcen als seine eigene *interne* Cloud verwalten, und dasselbe Unternehmen kann auch kommerzielle Cloud-Ressourcen von Amazon oder Google nutzen. Cloud-Ressourcen können sich auf Maschinen beziehen, die relativ einfache Aufgaben ausführen, wie z. B. die Bereitstellung von Websites, die Bereitstellung von gemeinsamem Speicherplatz, die Bereitstellung von Webdiensten (z. B. E-Mail oder Social-Media-Plattformen) sowie traditionellere rechenintensive Aufgaben wie die Ausführung einer Simulation.
 
 Der Begriff *HPC-System* beschreibt dagegen eine eigenständige Ressource für rechenintensive Arbeitslasten. Sie bestehen in der Regel aus einer Vielzahl integrierter Verarbeitungs- und Speicherelemente, die darauf ausgelegt sind, große Datenmengen und/oder eine große Anzahl von Gleitkommaoperationen ([FLOPS](https://en.wikipedia.org/wiki/FLOPS)) mit der höchstmöglichen Leistung zu verarbeiten. So sind zum Beispiel alle Maschinen auf der [Top-500](https://www.top500.org) Liste HPC-Systeme. Um diesen Anforderungen gerecht zu werden, muss eine HPC-Ressource an einem bestimmten, festen Standort vorhanden sein: Netzwerkkabel können nur bis zu einem bestimmten Punkt verlegt werden, und elektrische und optische Signale können nur mit einer bestimmten Geschwindigkeit übertragen werden.
 
 Der Begriff "Cluster" wird häufig für kleine bis mittelgroße HPC-Ressourcen verwendet, die weniger beeindruckend sind als die [Top-500] (https://www.top500.org). Cluster werden oft in Rechenzentren unterhalten, die mehrere solcher Systeme unterstützen, die alle ein gemeinsames Netzwerk und einen gemeinsamen Speicher nutzen, um gemeinsame rechenintensive Aufgaben zu unterstützen.
 
-## Angemeldet
+## Anmelden
 
 Der erste Schritt bei der Nutzung eines Clusters besteht darin, eine Verbindung zwischen unserem Laptop und dem Cluster herzustellen. Wenn wir an einem Computer sitzen (oder stehen, oder ihn in der Hand oder am Handgelenk halten), erwarten wir eine visuelle Anzeige mit Symbolen, Widgets und vielleicht einigen Fenstern oder Anwendungen: eine grafische Benutzeroberfläche (GUI). Da es sich bei Computerclustern um entfernte Ressourcen handelt, mit denen wir uns über oft langsame oder verzögerte Schnittstellen (insbesondere WiFi und VPNs) verbinden, ist es praktischer, eine Befehlszeilenschnittstelle (CLI) zu verwenden, bei der Befehle und Ergebnisse nur über Text übertragen werden. Alles, was nicht Text ist (z. B. Bilder), muss auf die Festplatte geschrieben und mit einem separaten Programm geöffnet werden.
 
@@ -67,9 +67,9 @@ Sehr oft sind viele Benutzer versucht, sich eine Hochleistungsrechner-Installati
 
 ::: challenge
 
-## Was befindet sich in Ihrem Heimatverzeichnis?
+## Was befindet sich in Ihrem Home-Verzeichnis?
 
-Die Systemadministratoren haben Ihr Home-Verzeichnis möglicherweise mit einigen hilfreichen Dateien, Ordnern und Verknüpfungen (Shortcuts) zu für Sie reserviertem Speicherplatz auf anderen Dateisystemen konfiguriert. Schauen Sie sich um und sehen Sie, was Sie finden können. *Tipp:* Die Shell-Befehle `pwd` und `ls` können dabei hilfreich sein. Der Inhalt des Heimatverzeichnisses variiert von Benutzer zu Benutzer. Bitte besprechen Sie alle Unterschiede, die Sie feststellen, mit Ihren Nachbarn.
+Die Systemadministratoren haben Ihr Home-Verzeichnis möglicherweise mit einigen hilfreichen Dateien, Ordnern und Verknüpfungen (Shortcuts) zu für Sie reserviertem Speicherplatz auf anderen Dateisystemen konfiguriert. Schauen Sie sich um und sehen Sie, was Sie finden können. *Tipp:* Die Shell-Befehle `pwd` und `ls` können dabei hilfreich sein. Der Inhalt des Home-Verzeichnisses variiert von Benutzer zu Benutzer. Bitte besprechen Sie alle Unterschiede, die Sie feststellen, mit Ihren Nachbarn.
 
 :::: solution
 
@@ -79,13 +79,13 @@ Die tiefste Ebene sollte sich unterscheiden: ``r config$remote$user`` ist eindeu
 
 Wenn Sie beide leere Verzeichnisse haben, werden sie identisch aussehen. Wenn Sie oder Ihr Nachbar das System vorher benutzt haben, kann es Unterschiede geben. Woran arbeiten Sie?
 
-Verwenden Sie `pwd`, um **p**den **w**arbeitenden **d**Verzeichnispfad zu drucken:
+Verwenden Sie `pwd` (print working directory), um den aktuellen Verzeichnispfad zu drucken:
 
 ```bash
 `r config$remote$prompt` pwd
 ```
 
-Sie können `ls` ausführen, um den Inhalt des Verzeichnisses zu **l**i**s**t, obwohl es möglich ist, dass nichts angezeigt wird (wenn keine Dateien bereitgestellt wurden). Um sicher zu gehen, benutzen Sie das `-a` Flag, um auch versteckte Dateien anzuzeigen.
+Sie können `ls` (list) ausführen, um den Inhalt des Verzeichnisses aufzulisten, obwohl es möglich ist, dass nichts angezeigt wird (wenn keine Dateien bereitgestellt wurden). Um sicher zu gehen, benutzen Sie das `-a` Flag, um auch versteckte Dateien anzuzeigen.
 
 ```bash
 `r config$remote$prompt` ls -a
@@ -136,7 +136,7 @@ Alle Knoten in einem HPC-System haben die gleichen Komponenten wie Ihr eigener L
 
 ::: challenge
 
-## Erforsche deinen Computer
+## Untersuche deinen Computer
 
 Versuchen Sie herauszufinden, wie viele CPUs und wie viel Arbeitsspeicher auf Ihrem persönlichen Computer verfügbar sind. Beachten Sie, dass Sie sich zuerst abmelden müssen, wenn Sie bei dem entfernten Computer-Cluster angemeldet sind. Geben Sie dazu `Ctrl+d` oder `exit` ein:
 
@@ -194,7 +194,7 @@ Sie können mehr Informationen über die Prozessoren erhalten, indem Sie `lscpu`
 `r config$remote$prompt` less /proc/meminfo
 ```
 
-Sie können auch die verfügbaren Dateisysteme mit `df` untersuchen, um **d**isk **f**ree space anzuzeigen. Das Flag `-h` zeigt die Größen in einem menschenfreundlichen Format an, d.h. GB statt B. Das **t**ype Flag `-T` zeigt, welche Art von Dateisystem jede Ressource ist.
+Sie können auch die verfügbaren Dateisysteme mit `df` (disk freespace )untersuchen, um Festplattenspeicher anzuzeigen. Das Flag `-h` zeigt die Größen in einem menschenfreundlichen Format an, d.h. GB statt B. Das type Flag `-T` zeigt, welche Art von Dateisystem jede Ressource ist.
 
 ```bash
 `r config$remote$prompt` df -Th
