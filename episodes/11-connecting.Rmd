@@ -89,7 +89,7 @@ Erzeugen Sie ein neues Schlüsselpaar aus öffentlichem und privatem Schlüssel 
 `r config$local$prompt` ssh-keygen -a 100 -f ~/.ssh/id_ed25519 -t ed25519
 ```
 
-Wenn Sie dazu aufgefordert werden, geben Sie ein sicheres Passwort ein, das die [obigen Überlegungen berücksichtigt](#uberlegungen-zu-ssh-schlusselpasswortern)
+Wenn Sie dazu aufgefordert werden, geben Sie ein sicheres Passwort ein, das die [obigen Überlegungen berücksichtigt](#überlegungen-zu-ssh-schlüsselpasswörtern)
 
 Beachten Sie, dass sich das Terminal nicht zu ändern scheint, während Sie das Passwort eingeben: Das ist zu Ihrer Sicherheit so gewollt. Sie werden aufgefordert, es noch einmal einzugeben, also machen Sie sich nicht zu viele Gedanken über Tippfehler.
 
@@ -118,7 +118,7 @@ Wenn `~/.ssh/id_rsa` bereits existiert, müssen Sie einen anderen Namen für das
 ```
 
 Wenn Sie dazu aufgefordert werden, geben Sie ein sicheres Passwort ein und
-beachten Sie dabei die [oben genannten Überlegungen](#uberlegungen-zu-ssh-schlusselpasswortern).
+beachten Sie dabei die [oben genannten Überlegungen](#überlegungen-zu-ssh-schlüsselpasswörtern).
 
 Werfen Sie einen Blick in `~/.ssh` (verwenden Sie `ls ~/.ssh`). Sie sollten zwei neue Dateien sehen:
 
@@ -135,7 +135,7 @@ Wenn Sie PuTTY unter Windows verwenden, laden Sie `puttygen` herunter und verwen
 - Wählen Sie `255` als Schlüsselgröße oder -stärke.
 - Klicken Sie auf die Schaltfläche "Generate".
 - Sie müssen keinen Kommentar eingeben.
-- Wenn Sie dazu aufgefordert werden, geben Sie ein sicheres Passwort ein und beachten Sie dabei die [oben genannten Überlegungen](#uberlegungen-zu-ssh-schlusselpasswortern).
+- Wenn Sie dazu aufgefordert werden, geben Sie ein sicheres Passwort ein und beachten Sie dabei die [oben genannten Überlegungen](#überlegungen-zu-ssh-schlüsselpasswörtern).
 - Speichern Sie die Schlüssel in einem Ordner, den kein anderer Benutzer des Systems lesen kann.
 
 Werfen Sie einen Blick in den von Ihnen angegebenen Ordner. Sie sollten zwei neue Dateien sehen:

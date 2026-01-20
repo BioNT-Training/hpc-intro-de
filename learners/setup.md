@@ -9,7 +9,7 @@ Programme bereits vorher zu installieren (oder zumindest herunterzuladen).
 
 1. [Eine Terminalanwendung oder
    Befehlszeilenschnittstelle](#wo-man-befehle-eingibt-wie-man-eine-neue-shell-öffnet)
-2. [Eine Secure Shell-Anwendung](#ssh-fur-sichere-verbindungen)
+2. [Eine Secure Shell-Anwendung](#ssh-für-sichere-verbindungen)
 
 :::::::::::::::::::::::::::::::::::::::::: prereq
 
