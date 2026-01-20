@@ -25,7 +25,7 @@ Am Ende dieses Workshops werden die Teilnehmer wissen, wie man:
 
 ## Erste Schritte
 
-Um zu beginnen, folgen Sie bitte den "[Setup Instructions](../learners/setup.md), um sicherzustellen, dass Sie ein Terminal und eine SSH-Anwendung haben.
+Um zu beginnen, folgen Sie bitte den [Setup Instructions](learners/setup.md), um sicherzustellen, dass Sie ein Terminal und eine SSH-Anwendung haben.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
