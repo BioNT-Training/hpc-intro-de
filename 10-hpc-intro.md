@@ -57,7 +57,7 @@ zu lösen.
 
 ## Jargon Busting Präsentation
 
-Öffnen Sie den [HPC Jargon Buster](../files/jargon#p1) in einer neuen Registerkarte. Um
+Öffnen Sie den [HPC Jargon Buster](files/jargon.html#p1) in einer neuen Registerkarte. Um
 den Inhalt zu präsentieren, drücken Sie `C`, um eine **c**lone in einem separaten
 Fenster zu öffnen, und drücken Sie dann `P`, um den Darstellungsmodus (**p**resentation) umzuschalten.
 
