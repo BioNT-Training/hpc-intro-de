@@ -9,7 +9,7 @@ site: sandpaper::sandpaper_site
 Dieses Schulungsmaterial dient ausschließlich zu Bildungs- und
 Informationszwecken. Es erläutert die Nutzung einer HPC-Umgebung auf Basis von
 [SLURM](https://slurm.schedmd.com/overview.html),
-[Modulen](https://lmod.readthedocs.io)
+[modules](https://lmod.readthedocs.io)
 und verwandten Technologien, stellt jedoch keinen Zugang zu der zur Durchführung
 der Übungen erforderlichen Recheninfrastruktur bereit.
 
